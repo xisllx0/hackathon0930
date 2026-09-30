@@ -1,7 +1,7 @@
 # controllers/rescue_controller/robot_io.py
 from controller import Robot
 
-from controllers.rescue_controller.config import (
+from config import (
     CAMERA,
     LIDAR,
     LEFT_MOTOR,
