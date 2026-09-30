@@ -1,6 +1,11 @@
 from controller import Robot, Keyboard
 
 robot = Robot()
+print("=== 로봇 장치 목록 ===", flush=True)
+for i in range(robot.getNumberOfDevices()):
+    device = robot.getDeviceByIndex(i)
+    print(type(device).__name__, repr(device.getName()), flush=True)
+
 
 timestep = int(robot.getBasicTimeStep())
 
@@ -22,6 +27,8 @@ right_motor.setVelocity(0.0)
 
 # 바퀴 회전 속도 [rad/s]
 SPEED = 3.0
+
+
 
 while robot.step(timestep) != -1:
     key = keyboard.getKey()
