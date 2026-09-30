@@ -7,7 +7,7 @@ LEFT_MOTOR = "left wheel motor"
 RIGHT_MOTOR = "right wheel motor"
 
 # 모터 속도 단위: rad/s
-MAX_WHEEL_SPEED = 3.0
+MAX_WHEEL_SPEED = 6.0
 
 # 사과 탐지
 TARGET_COUNT = 2
@@ -28,7 +28,7 @@ LEFT_ENCODER = "left wheel sensor"
 RIGHT_ENCODER = "right wheel sensor"
 
 # 임의로 설정햇음요 ㅜㅜ
-MAX_WHEEL_SPEED = 3.0
+MAX_WHEEL_SPEED = 6.0
 WHEEL_RADIUS = 0.033
 AXLE_LENGTH = 0.160
 TARGET_COUNT = 2

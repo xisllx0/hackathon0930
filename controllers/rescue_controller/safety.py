@@ -14,6 +14,10 @@ STOP_TICKS_FOR_REPLAN = 15
 BACKUP_AFTER_TICKS = 45  # still blocked after this long -> reverse a little
 BACKUP_TICKS = 20
 BACKUP_WHEEL = -1.5      # rad/s
+ESCAPE_SPIN = 1.0        # rad/s per wheel when turning away from a blocked front
+# Measured in Webots: index runs CLOCKWISE, index 180 = front, 90 = left, 270 = right.
+LEFT_SLICE = (60, 120)
+RIGHT_SLICE = (240, 300)
 REAR_CLEAR = 0.25        # m needed behind us to reverse
 
 
@@ -28,6 +32,11 @@ class SafetyMonitor:
         self.stopped = False
         self.replan = False
         self.backup_left = 0
+
+    @staticmethod
+    def _side_open(ranges, sl):
+        vals = [r for r in ranges[sl[0]:sl[1]] if r is not None and not math.isnan(r) and not math.isinf(r)]
+        return sum(vals) / len(vals) if vals else 3.5
 
     def rear_min(self, ranges):
         n = len(ranges)
@@ -72,6 +81,9 @@ class SafetyMonitor:
 
         if d <= self.stop_dist:
             spin = (right - left) / 2.0
+            if abs(spin) < 0.3:
+                # blocked and not already turning: turn toward the more open side
+                spin = ESCAPE_SPIN if self._side_open(ranges, LEFT_SLICE) >= self._side_open(ranges, RIGHT_SLICE) else -ESCAPE_SPIN
             left, right = -spin, spin
             self.stopped = True
             self.stopped_ticks += 1

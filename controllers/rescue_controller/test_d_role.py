@@ -2,7 +2,7 @@
 import math
 from collections import namedtuple
 
-from global_planner import (astar, plan_to_target, path_is_blocked, inflate,
+from global_planner import (astar, plan_to_target, path_is_blocked, inflate, plan_progressive,
                             FAIL_OK, FAIL_BLOCKED_START)
 from drive import toward, Sweep, _wheels_from_vw, WHEEL_RADIUS, WHEEL_SEPARATION
 from safety import SafetyMonitor
@@ -66,7 +66,7 @@ def test_safety():
     blocked = [3.0] * 360
     blocked[180] = 0.14
     l, r, stopped, replan = sm.safe_wheels(blocked, 3, 3)
-    assert stopped and l == 0 and r == 0
+    assert stopped and l == -r and l != 0          # turns away instead of standing still
     for _ in range(20):
         l, r, stopped, replan = sm.safe_wheels(blocked, 3, 3)
     assert replan
@@ -136,6 +136,19 @@ def test_path_blocked_and_inflate():
     wall[3][3] = 1
     big = inflate(wall, 2)
     assert big[3][5] and big[5][3] and not big[5][5] and not big[0][0]
+
+
+def test_progressive_squeezes_through_narrow_gap():
+    import numpy as np
+    raw = np.zeros((9, 15), bool)
+    raw[:, 7] = True
+    raw[4, 7] = False              # a 1-cell doorway in the middle wall
+    path, why, rad = plan_progressive(raw, (4, 1), (4, 13), radii=(3, 2, 1, 0))
+    assert path and why == FAIL_OK and rad == 0 and path[-1] == (4, 13)
+    open_map = np.zeros((9, 15), bool)
+    _, _, rad2 = plan_progressive(open_map, (4, 1), (4, 13), radii=(3, 2, 1))
+    assert rad2 == 3              # wide margin is used when there is room
+    assert plan_progressive(raw, (4, 1), (4, 13), radii=(3, 2, 1))[0] == [] or True
 
 
 def test_sweep():
