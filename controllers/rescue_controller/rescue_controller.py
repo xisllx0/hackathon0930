@@ -41,6 +41,7 @@ def main():
     sweeping = False
     step_count = 0
     last_state = None
+    clearances = (0.23, 0.18, 0.14)  # 통로가 좁을 때만 여유 거리를 줄인다.
 
     try:
         while io.step():
@@ -90,29 +91,53 @@ def main():
                 if need_replan or step_count % 12 == 0:
                     occ = mapping.get_occ()
                     if state == 'EXPLORE':
-                        blocked = navigator.blocked_grid(occ)
                         start = navigator.world_to_cell(pose.x, pose.y)
-                        if navigator._valid(blocked, start) and not blocked[start[0]][start[1]]:
+                        path_xy = []
+                        for clearance in clearances:
+                            navigator.clearance = clearance
+                            blocked = navigator.blocked_grid(occ)
+                            if not navigator._valid(blocked, start) or blocked[start[0]][start[1]]:
+                                continue
                             frontier = explorer.pick(occ, blocked, start)
                             cells = astar(blocked, start, frontier) if frontier else []
-                            path_xy = [navigator.cell_to_world(cell) for cell in cells]
-                            if frontier is not None and not path_xy:
-                                explorer.fail()
-                        else:
-                            path_xy = []
+                            if cells:
+                                path_xy = [navigator.cell_to_world(cell) for cell in cells]
+                                if clearance != clearances[0]:
+                                    print('[PATH] 좁은 통로:', clearance, 'm 여유')
+                                break
+                        if not path_xy and explorer.goal is not None:
+                            explorer.fail()
                     else:
                         approach = 0.30 if state == 'TARGET' else 0.15
-                        path_xy, reason = navigator.to_goal(
-                            occ, pose, goal_xy, approach=approach)
+                        path_xy = []
+                        reason = 'no_path'
+                        for clearance in clearances:
+                            navigator.clearance = clearance
+                            path_xy, reason = navigator.to_goal(
+                                occ, pose, goal_xy, approach=approach)
+                            if path_xy:
+                                if clearance != clearances[0]:
+                                    print('[PATH] 좁은 통로:', clearance, 'm 여유')
+                                break
                         if not path_xy and step_count % 60 == 0:
                             print('[PATH] 경로 없음:', state, reason)
                     need_replan = False
 
                 if path_xy:
-                    left, right, arrived = toward(pose, path_xy)
+                    # 짧은 lookahead로 문틀 사이에서 경로 모서리를 크게 자르지 않는다.
+                    left, right, arrived = toward(pose, path_xy, lookahead=0.15)
                     if arrived and state == 'EXPLORE':
-                        sweep.start(pose)
-                        sweeping = True
+                        # 문턱처럼 양옆이 가까운 곳에서는 제자리 360도 회전하지 않는다.
+                        n = len(ranges)
+                        sides = [ranges[i % n] for i in
+                                 (n // 4, 3 * n // 4)] if n else []
+                        narrow = any(math.isfinite(d) and d < 0.32 for d in sides)
+                        if narrow:
+                            explorer.goal = None
+                            need_replan = True
+                        else:
+                            sweep.start(pose)
+                            sweeping = True
                         left, right = 0.0, 0.0
                     elif arrived and state == 'TARGET':
                         # 목표 표면까지 충분히 접근하면 다음 루프에서 방문 여부 확인.
