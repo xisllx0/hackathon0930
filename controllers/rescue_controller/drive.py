@@ -1,10 +1,14 @@
 """D-2: look-ahead path following. World coords in metres/radians, x forward, theta CCW."""
 import math
 
-WHEEL_RADIUS = 0.033
-WHEEL_SEPARATION = 0.160
+try:  # shared team config (config.py has AXLE_LENGTH, not WHEEL_BASE)
+    from config import WHEEL_RADIUS, MAX_WHEEL_SPEED
+    from config import AXLE_LENGTH as WHEEL_SEPARATION
+except ImportError:  # standalone tests without the team config
+    WHEEL_RADIUS = 0.033
+    WHEEL_SEPARATION = 0.160
+    MAX_WHEEL_SPEED = 6.0    # rad/s (motor limit 6.67)
 
-MAX_WHEEL_SPEED = 6.0    # rad/s, motor limit
 DEFAULT_V = 0.10         # m/s forward speed (0.18 m/s made the robot scrape walls)
 LOOKAHEAD = 0.30         # m, path distance ahead of nearest waypoint
 ARRIVE_RADIUS = 0.10     # m
