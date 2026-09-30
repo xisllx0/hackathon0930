@@ -40,13 +40,15 @@ class SafetyMonitor:
 
     def rear_min(self, ranges):
         n = len(ranges)
+        if n == 0:
+            return 0.0
         best = float("inf")
         for i in range(-self.half_angle, self.half_angle + 1):
             r = ranges[i % n]
             if r is None or math.isnan(r) or math.isinf(r) or r <= 0.0:
                 continue
             best = min(best, r)
-        return best
+        return best if math.isfinite(best) else 0.0
 
     def front_min(self, ranges):
         n = len(ranges)
@@ -68,12 +70,22 @@ class SafetyMonitor:
         away once stopped. If we stay blocked for a long time we back up a little.
         """
         if self.backup_left > 0:
+            if self.rear_min(ranges) <= REAR_CLEAR:
+                self.backup_left = 0
+                self.stopped, self.replan = True, True
+                return 0.0, 0.0, True, True
             self.backup_left -= 1
             self.stopped, self.replan = True, True
             return BACKUP_WHEEL, BACKUP_WHEEL, True, True
 
+        if not ranges:
+            self.stopped, self.replan = True, True
+            return 0.0, 0.0, True, True
         d = self.front_min(ranges)
         forward = (left + right) / 2.0
+        if forward < 0 and self.rear_min(ranges) <= REAR_CLEAR:
+            self.stopped, self.replan = True, True
+            return 0.0, 0.0, True, True
         if forward <= 0 or d >= self.slow_dist:
             self.stopped, self.replan = False, False
             self.stopped_ticks = 0
