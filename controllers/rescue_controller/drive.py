@@ -1,9 +1,12 @@
 """D-2: look-ahead path following. World coords in metres/radians, x forward, theta CCW."""
 import math
 
-try:  # shared team config (config.py has AXLE_LENGTH, not WHEEL_BASE)
+try:  # shared team config
     from config import WHEEL_RADIUS, MAX_WHEEL_SPEED
-    from config import AXLE_LENGTH as WHEEL_SEPARATION
+    try:
+        from config import WHEEL_BASE as WHEEL_SEPARATION      # current name (0.177 m measured)
+    except ImportError:
+        from config import AXLE_LENGTH as WHEEL_SEPARATION     # older name
 except ImportError:  # standalone tests without the team config
     WHEEL_RADIUS = 0.033
     WHEEL_SEPARATION = 0.160
