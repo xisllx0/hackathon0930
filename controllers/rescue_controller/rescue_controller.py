@@ -1,37 +1,57 @@
-# controllers/rescue_controller/rescue_controller.py
-from controller import Robot
+from robot_io import RobotIO
+from localization import Odometry
 from target_detection import TargetDetector
 
-robot = Robot()
-timestep = int(robot.getBasicTimeStep())
 
-camera = robot.getDevice("camera")
-camera.enable(timestep)
+def main():
+    io = RobotIO()
+    detector = TargetDetector()  
 
-left_motor = robot.getDevice("left wheel motor")
-right_motor = robot.getDevice("right wheel motor")
+    # 센서의 첫 측정값 확보
+    if not io.step():
+        return
 
-left_motor.setPosition(float("inf"))
-right_motor.setPosition(float("inf"))
-left_motor.setVelocity(0.0)
-right_motor.setVelocity(0.0)
+    odometry = Odometry(*io.encoder_positions())
+    step_count = 0
 
-# YOLO 모델은 반복문 밖에서 한 번만 불러오기
-detector = TargetDetector()
+    try:
+        while io.step():  # 프로젝트 전체에서 사용하는 메인 루프 하나
+            # 1. 현재 위치 갱신
+            pose = odometry.update(*io.encoder_positions())
 
-step_count = 0
+            # 2. 최신 LiDAR 측정
+            ranges = io.lidar_ranges()
 
-while robot.step(timestep) != -1:
-    step_count += 1
+            # 3. 사과 탐지: YOLO는 무거우므로 5스텝마다 실행
+            detections = []
+            if step_count % 5 == 0:
+                detections = detector.detect_camera(io.camera)
 
-    # YOLO가 느릴 수 있으므로 10스텝마다 탐지
-    if step_count % 10 == 0:
-        detections = detector.detect_camera(camera)
+            # 4. 앞으로 A의 지도 갱신 연결
+            # grid.update(pose, ranges)
 
-        for target in detections:
-            print(
-                f"빨간 사과 발견: "
-                f"방향={target.bearing:.2f} rad, "
-                f"신뢰도={target.confidence:.2f}, "
-                f"빨간색 비율={target.red_ratio:.2f}"
-            )
+            # 5. 앞으로 C의 목표 위치·방문 목록 연결
+            # for detection in detections:
+            #     target_manager.observe(pose, detection)
+
+            # 6. 앞으로 B의 미션과 D의 경로·주행 연결
+            # goal = mission.choose_goal(...)
+            # path = planner.plan(...)
+            # left_speed, right_speed = drive.follow(pose, path)
+            # left_speed, right_speed = safety.check(ranges, left_speed, right_speed)
+            # io.wheels(left_speed, right_speed)
+
+            # 주행 코드가 연결되기 전까지는 정지
+            io.stop()
+
+            if detections:
+                print("현재 위치:", pose)
+                print("발견한 빨간 사과 후보:", detections)
+
+            step_count += 1
+    finally:
+        io.stop()
+
+
+if __name__ == "__main__":
+    main()
