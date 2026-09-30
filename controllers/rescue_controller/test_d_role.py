@@ -6,7 +6,7 @@ from global_planner import (astar, plan_to_target, path_is_blocked, inflate, pla
                             FAIL_OK, FAIL_BLOCKED_START)
 from drive import toward, Sweep, _wheels_from_vw, WHEEL_RADIUS, WHEEL_SEPARATION
 from safety import SafetyMonitor
-from exploration import next_frontier, Explorer, FREE, UNKNOWN, OCCUPIED
+from exploration import next_frontier, Explorer, viewed_blocks, FREE, UNKNOWN, OCCUPIED
 
 Pose = namedtuple("Pose", "x y theta")
 
@@ -164,6 +164,19 @@ def test_bad_inputs_do_not_crash():
         assert len(out) == 4
     assert astar([[0]], (0, 0), (0, 0)) == [(0, 0)]
     assert toward(Pose(float("nan"), 0, 0), [(1, 0), (2, 0)]) == (0.0, 0.0, False)
+
+
+def test_viewed_blocks_needs_all_free_cells():
+    import numpy as np
+    occ = np.zeros((5, 10), np.int8)              # two 5x5 blocks, all free
+    viewed = np.zeros((5, 10), bool)
+    viewed[:, :5] = True                          # left block fully seen
+    viewed[0, 5] = True                           # right block: one cell only
+    got = {tuple(b) for b in viewed_blocks(occ, viewed, 5, 1.0)}
+    assert got == {(0, 0)}                        # right block is NOT written off
+    assert {tuple(b) for b in viewed_blocks(occ, viewed, 5, 0.01)} == {(0, 0), (0, 1)}
+    occ[:, 5:] = OCCUPIED                         # nothing to look at there
+    assert {tuple(b) for b in viewed_blocks(occ, viewed, 5, 1.0)} == {(0, 0), (0, 1)}
 
 
 def test_sweep():

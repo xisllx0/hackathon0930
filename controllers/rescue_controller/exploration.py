@@ -126,6 +126,26 @@ BLOCK = 5            # coverage block = 5x5 cells
 SEE_RADIUS_CELLS = 15  # default "we stood here and looked around" radius (cells)
 
 
+def viewed_blocks(occ, viewed, block=BLOCK, need=1.0):
+    """Blocks whose free cells were (almost) all looked at -> feed to Explorer.add_viewed_blocks.
+
+    occ: map (FREE/UNKNOWN/OCCUPIED); viewed: bool grid of cells the camera could have
+    seen (field of view + line of sight + close enough to spot a 5 cm apple).
+    A block only counts once `need` (1.0 = all) of its free cells were viewed, so a
+    corner that was seen from afar is not written off. Blocks with no free cell count as done.
+    """
+    import numpy as np
+    occ = np.asarray(occ)
+    viewed = np.asarray(viewed, dtype=bool)
+    h, w = occ.shape[0] // block * block, occ.shape[1] // block * block
+    free = occ[:h, :w] == FREE
+    shape = (h // block, block, w // block, block)
+    free_n = free.reshape(shape).sum(axis=(1, 3))
+    seen_n = (free & viewed[:h, :w]).reshape(shape).sum(axis=(1, 3))
+    done = (free_n == 0) | (seen_n >= need * free_n)
+    return np.argwhere(done).tolist()
+
+
 def next_uncovered(occ, blocked, robot_cell, covered_blocks, skip=(), block=BLOCK,
                    skip_radius=SKIP_RADIUS):
     """Nearest reachable known-free cell in a block nobody has looked at yet.
