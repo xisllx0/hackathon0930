@@ -2,10 +2,11 @@
 import math
 from collections import namedtuple
 
-from global_planner import astar, plan_to_target, FAIL_OK, FAIL_BLOCKED_START
-from drive import toward, _wheels_from_vw, WHEEL_RADIUS, WHEEL_SEPARATION
+from global_planner import (astar, plan_to_target, path_is_blocked, inflate,
+                            FAIL_OK, FAIL_BLOCKED_START)
+from drive import toward, Sweep, _wheels_from_vw, WHEEL_RADIUS, WHEEL_SEPARATION
 from safety import SafetyMonitor
-from exploration import next_frontier, FREE, UNKNOWN, OCCUPIED
+from exploration import next_frontier, Explorer, FREE, UNKNOWN, OCCUPIED
 
 Pose = namedtuple("Pose", "x y theta")
 
@@ -63,7 +64,7 @@ def test_safety():
     clear = [3.0] * 360
     assert sm.safe_wheels(clear, 3, 3)[:2] == (3, 3)
     blocked = [3.0] * 360
-    blocked[180] = 0.2
+    blocked[180] = 0.14
     l, r, stopped, replan = sm.safe_wheels(blocked, 3, 3)
     assert stopped and l == 0 and r == 0
     for _ in range(20):
@@ -72,23 +73,84 @@ def test_safety():
     l, r, stopped, replan = sm.safe_wheels(clear, 3, 3)   # space opens -> moves again
     assert (l, r) == (3, 3) and not stopped and not replan
     near = [3.0] * 360
-    near[180] = 0.4
+    near[180] = 0.22
     l, r, stopped, _ = sm.safe_wheels(near, 3, 3)
-    assert 0 < l < 3 and not stopped
+    assert 0 < l < 3 and not stopped and l >= 3 * 0.45 - 1e-9
     inf = [float("inf")] * 360
     assert sm.safe_wheels(inf, 3, 3)[2] is False
 
 
-def test_frontier():
+def _room():
     U, F, O = UNKNOWN, FREE, OCCUPIED
-    occ = [[F, F, U],
-           [F, O, U],
-           [F, F, F]]
-    blocked = [[c == O for c in row] for row in occ]
-    assert next_frontier(occ, blocked, (0, 0)) == (0, 1)
-    assert next_frontier(occ, blocked, (0, 0), skip=[(0, 1)]) == (2, 2)
-    full = [[F, F], [F, F]]
-    assert next_frontier(full, [[0, 0], [0, 0]], (0, 0)) is None
+    occ = [[O] * 8,
+           [F, F, F, F, F, U, U, U],
+           [F, F, F, F, F, U, U, U],
+           [F, F, F, F, F, U, U, U],
+           [O] * 8]
+    return occ, [[c == O for c in row] for row in occ]
+
+
+def test_frontier():
+    occ, blocked = _room()
+    assert next_frontier(occ, blocked, (2, 0)) == (2, 4)          # nearest of the opening
+    assert next_frontier(occ, blocked, (2, 0), skip=[(2, 4)]) is None
+    full = [[FREE, FREE], [FREE, FREE]]
+    assert next_frontier(full, [[0, 0], [0, 0]], (0, 0)) is None  # nothing left to explore
+    # a single-cell keyhole is noise unless min_cluster is lowered
+    occ[1][5] = FREE
+    occ[2][4] = OCCUPIED
+    occ[3][4] = OCCUPIED
+    occ[1][4] = FREE
+    blocked = [[c == OCCUPIED for c in row] for row in occ]
+    assert next_frontier(occ, blocked, (2, 0)) is None
+    assert next_frontier(occ, blocked, (2, 0), min_cluster=1) is not None
+    # frontier that can only be reached through unknown cells must not be chosen
+    U, F, O = UNKNOWN, FREE, OCCUPIED
+    occ2 = [[F, F, U, F, F, U, U],
+            [F, F, U, F, F, U, U],
+            [F, F, U, F, F, U, U]]
+    blocked2 = [[c == O for c in row] for row in occ2]
+    goal = next_frontier(occ2, blocked2, (1, 0), min_cluster=1)
+    assert goal is not None and goal[1] <= 1
+
+
+def test_explorer_sticks_to_goal():
+    occ, blocked = _room()
+    ex = Explorer()
+    g = ex.pick(occ, blocked, (2, 0))
+    assert g == (2, 4) and ex.pick(occ, blocked, (2, 1)) == g     # keeps the goal
+    ex.fail()
+    g2 = ex.pick(occ, blocked, (2, 0))                            # frontier gone -> coverage
+    assert g2 is not None and ex.mode == "coverage"
+    ex.observe((2, 0))                                            # we looked at the whole room
+    assert ex.pick(occ, blocked, (2, 0)) is None
+
+
+def test_path_blocked_and_inflate():
+    b = [[0] * 5 for _ in range(3)]
+    path = [(1, c) for c in range(5)]
+    assert not path_is_blocked(b, path)
+    b[1][3] = 1
+    assert path_is_blocked(b, path) and not path_is_blocked(b, path, start_idx=4)
+    wall = [[0] * 7 for _ in range(7)]
+    wall[3][3] = 1
+    big = inflate(wall, 2)
+    assert big[3][5] and big[5][3] and not big[5][5] and not big[0][0]
+
+
+def test_sweep():
+    sw = Sweep()
+    pose = Pose(0, 0, 0.0)
+    sw.start(pose)
+    turned = 0.0
+    for _ in range(1000):
+        l, r, done = sw.step(pose)
+        if done:
+            break
+        assert l < 0 < r                       # turning left
+        turned += 0.05
+        pose = Pose(0, 0, (pose.theta + 0.05 + math.pi) % (2 * math.pi) - math.pi)
+    assert done and 2 * math.pi - 0.2 < turned < 2 * math.pi + 0.2
 
 
 if __name__ == "__main__":

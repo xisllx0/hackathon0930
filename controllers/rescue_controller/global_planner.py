@@ -82,6 +82,38 @@ def nearest_free_cell(blocked, cell, max_radius=10):
     return None
 
 
+def path_is_blocked(blocked, path, start_idx=0, lookahead=60):
+    """True if any of the next `lookahead` cells of `path` became blocked.
+
+    Call every few steps: newly seen walls invalidate the old path before the robot
+    bumps into them (safety.py only reacts once we are already close).
+    """
+    for r, c in path[start_idx:start_idx + lookahead]:
+        if blocked[r][c]:
+            return True
+    return False
+
+
+def inflate(blocked, radius_cells):
+    """Grow blocked cells by `radius_cells` (round footprint). Needs numpy.
+
+    Use it when the map builder hands over raw walls: radius_cells ~
+    ceil((robot radius 0.105 m + margin) / cell size).
+    """
+    import numpy as np
+    b = np.asarray(blocked, dtype=bool)
+    out = b.copy()
+    rows, cols = b.shape
+    for dr in range(-radius_cells, radius_cells + 1):
+        for dc in range(-radius_cells, radius_cells + 1):
+            if dr * dr + dc * dc > radius_cells * radius_cells:
+                continue
+            r0, r1 = max(0, dr), min(rows, rows + dr)
+            c0, c1 = max(0, dc), min(cols, cols + dc)
+            out[r0 - dr:r1 - dr, c0 - dc:c1 - dc] |= b[r0:r1, c0:c1]
+    return out
+
+
 def plan_to_target(blocked, start, goal, max_radius=10):
     """A* to `goal`; if the goal cell is blocked, go to the nearest free cell instead.
 

@@ -5,7 +5,7 @@ WHEEL_RADIUS = 0.033
 WHEEL_SEPARATION = 0.160
 
 MAX_WHEEL_SPEED = 6.0    # rad/s, motor limit
-DEFAULT_V = 0.10         # m/s forward speed
+DEFAULT_V = 0.10         # m/s forward speed (0.18 m/s made the robot scrape walls)
 LOOKAHEAD = 0.30         # m, path distance ahead of nearest waypoint
 ARRIVE_RADIUS = 0.10     # m
 TURN_IN_PLACE_ANGLE = math.radians(60)
@@ -71,3 +71,28 @@ def toward(pose, path_xy, v=DEFAULT_V, lookahead=LOOKAHEAD, arrive_radius=ARRIVE
     v_cmd = min(v_cmd, max(0.03, goal_dist))
     left, right = _wheels_from_vw(v_cmd, v_cmd * curvature)
     return left, right, False
+
+
+class Sweep:
+    """Turn once around in place (left turn) so the camera looks in every direction.
+
+    sweep = Sweep(); sweep.start(pose); each step: l, r, done = sweep.step(pose)
+    """
+
+    def __init__(self, wheel=2.0, total=2 * math.pi):
+        self.wheel = wheel
+        self.total = total
+        self.acc = 0.0
+        self.last = 0.0
+
+    def start(self, pose):
+        self.acc = 0.0
+        self.last = pose.theta
+
+    def step(self, pose):
+        d = (pose.theta - self.last + math.pi) % (2 * math.pi) - math.pi
+        self.acc += d
+        self.last = pose.theta
+        if self.acc >= self.total - 0.1:
+            return 0.0, 0.0, True
+        return -self.wheel, self.wheel, False
