@@ -82,6 +82,38 @@ def nearest_free_cell(blocked, cell, max_radius=10):
     return None
 
 
+def path_is_blocked(blocked, path, start_idx=0, lookahead=60):
+    """True if any of the next `lookahead` cells of `path` became blocked.
+
+    Call every few steps: newly seen walls invalidate the old path before the robot
+    bumps into them (safety.py only reacts once we are already close).
+    """
+    for r, c in path[start_idx:start_idx + lookahead]:
+        if blocked[r][c]:
+            return True
+    return False
+
+
+def inflate(blocked, radius_cells):
+    """Grow blocked cells by `radius_cells` (round footprint). Needs numpy.
+
+    Use it when the map builder hands over raw walls: radius_cells ~
+    ceil((robot radius 0.105 m + margin) / cell size).
+    """
+    import numpy as np
+    b = np.asarray(blocked, dtype=bool)
+    out = b.copy()
+    rows, cols = b.shape
+    for dr in range(-radius_cells, radius_cells + 1):
+        for dc in range(-radius_cells, radius_cells + 1):
+            if dr * dr + dc * dc > radius_cells * radius_cells:
+                continue
+            r0, r1 = max(0, dr), min(rows, rows + dr)
+            c0, c1 = max(0, dc), min(cols, cols + dc)
+            out[r0 - dr:r1 - dr, c0 - dc:c1 - dc] |= b[r0:r1, c0:c1]
+    return out
+
+
 def plan_to_target(blocked, start, goal, max_radius=10):
     """A* to `goal`; if the goal cell is blocked, go to the nearest free cell instead.
 
@@ -100,3 +132,29 @@ def plan_to_target(blocked, start, goal, max_radius=10):
     if not path:
         return [], FAIL_NO_PATH
     return path, FAIL_OK
+
+
+def plan_progressive(raw_blocked, start, goal, radii=(3, 2, 1), extra_blocked=None, max_radius=14):
+    """Plan with a wide wall margin first, then squeeze through tighter spots.
+
+    raw_blocked: un-inflated walls. radii: wall margins in cells, widest first
+    (e.g. 3 cells x 0.05 m = 0.15 m). extra_blocked: cells that are never allowed
+    (e.g. unknown space when only known ground should be used).
+    Returns (path, reason, radius_used); path == [] if no margin works. Small rooms
+    and corners (where the apples hide) are reached through the tighter margins.
+    """
+    import numpy as np
+    raw = np.asarray(raw_blocked, dtype=bool)
+    extra = None if extra_blocked is None else np.asarray(extra_blocked, dtype=bool)
+    sr, sc = start
+    why = FAIL_NO_PATH
+    for rad in radii:
+        b = inflate(raw, rad)
+        if extra is not None:
+            b = b | extra
+        n = rad + 1
+        b[max(0, sr - n):sr + n + 1, max(0, sc - n):sc + n + 1] = False   # our own footprint is free
+        path, why = plan_to_target(b.tolist(), start, goal, max_radius)
+        if path:
+            return path, why, rad
+    return [], why, None
