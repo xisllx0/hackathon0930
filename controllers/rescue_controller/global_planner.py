@@ -136,11 +136,13 @@ def plan_to_target(blocked, start, goal, max_radius=10):
     return path, FAIL_OK
 
 
-def plan_progressive(raw_blocked, start, goal, radii=(3, 2, 1), extra_blocked=None, max_radius=14):
+def plan_progressive(raw_blocked, start, goal, radii=(3, 2), extra_blocked=None, max_radius=14):
     """Plan with a wide wall margin first, then squeeze through tighter spots.
 
     raw_blocked: un-inflated walls. radii: wall margins in cells, widest first
-    (e.g. 3 cells x 0.05 m = 0.15 m). extra_blocked: cells that are never allowed
+    (3 cells x 0.05 m = 0.15 m, then 2 cells = 0.10 m). Never go below the robot's own
+    radius (0.105 m): the old 1-cell (0.05 m) step made the robot scrape and wedge.
+    extra_blocked: cells that are never allowed
     (e.g. unknown space when only known ground should be used).
     Returns (path, reason, radius_used); path == [] if no margin works. Small rooms
     and corners (where the apples hide) are reached through the tighter margins.

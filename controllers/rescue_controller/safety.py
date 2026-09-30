@@ -6,14 +6,17 @@ LiDAR (LDS-01): 360 beams, index 180 = front, 0 = back, 90 = left, 270 = right
 import math
 
 ROBOT_RADIUS = 0.105
-STOP_DIST = 0.15         # m; must NOT exceed the planner's wall margin (0.15 m) or path and safety deadlock at corners
-SLOW_DIST = 0.32
+STOP_DIST = 0.20         # m, front-sector obstacle distance that triggers a stop (0.15 got stuck more in Webots tests)
+SLOW_DIST = 0.40
 MIN_SLOW_SCALE = 0.45    # never crawl slower than this fraction while merely 'slowing'
 FRONT_HALF_ANGLE = 15    # beams on each side of index 180 (narrow: doorframes beside us must not count)
 STOP_TICKS_FOR_REPLAN = 15
 BACKUP_AFTER_TICKS = 45  # still blocked after this long -> reverse a little
-BACKUP_TICKS = 20
-BACKUP_WHEEL = -1.5      # rad/s
+BACKUP_TICKS = 24        # x 64 ms
+BACKUP_WHEEL = -3.0      # rad/s per wheel = 0.10 m/s -> about 15 cm of reversing
+TURN_TICKS = 33          # then turn ~90 deg toward the open side (2.0 rad/s wheels ~ 0.75 rad/s)
+TURN_WHEEL = 2.0
+REAR_ABORT = 0.15        # stop reversing if something is this close behind
 ESCAPE_SPIN = 1.0        # rad/s per wheel when turning away from a blocked front
 # Measured in Webots: index runs CLOCKWISE, index 180 = front, 90 = left, 270 = right.
 LEFT_SLICE = (60, 120)
@@ -32,6 +35,14 @@ class SafetyMonitor:
         self.stopped = False
         self.replan = False
         self.backup_left = 0
+        self.turn_left = 0
+        self.turn_dir = 1
+
+    def _start_turn(self, ranges):
+        left_open = self._side_open(ranges, LEFT_SLICE)
+        right_open = self._side_open(ranges, RIGHT_SLICE)
+        self.turn_dir = 1 if left_open >= right_open else -1
+        self.turn_left = TURN_TICKS
 
     @staticmethod
     def _side_open(ranges, sl):
@@ -69,12 +80,19 @@ class SafetyMonitor:
         Only forward motion is limited; rotation is kept so the robot can turn
         away once stopped. If we stay blocked for a long time we back up a little.
         """
-        if self.backup_left > 0:
-            if self.rear_min(ranges) <= REAR_CLEAR:
+        if self.turn_left > 0:                      # escape step 2: turn toward the open side
+            self.turn_left -= 1
+            self.stopped, self.replan = True, True
+            return -TURN_WHEEL * self.turn_dir, TURN_WHEEL * self.turn_dir, True, True
+        if self.backup_left > 0:                    # escape step 1: back off about 15 cm
+            if self.rear_min(ranges) <= REAR_ABORT:
                 self.backup_left = 0
+                self._start_turn(ranges)
                 self.stopped, self.replan = True, True
                 return 0.0, 0.0, True, True
             self.backup_left -= 1
+            if self.backup_left == 0:
+                self._start_turn(ranges)
             self.stopped, self.replan = True, True
             return BACKUP_WHEEL, BACKUP_WHEEL, True, True
 

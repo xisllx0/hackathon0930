@@ -179,6 +179,25 @@ def test_viewed_blocks_needs_all_free_cells():
     assert {tuple(b) for b in viewed_blocks(occ, viewed, 5, 1.0)} == {(0, 0), (0, 1)}
 
 
+def test_escape_backs_off_then_turns_toward_open_side():
+    sm = SafetyMonitor()
+    r = [3.0] * 360
+    for i in range(165, 196):
+        r[i] = 0.14                                   # wall right in front, clear behind
+    for i in range(60, 120):
+        r[i] = 2.5                                    # left side (index 90) is more open
+    for i in range(240, 300):
+        r[i] = 0.5
+    seq = ""
+    for _ in range(200):
+        l, rr_, stopped, replan = sm.safe_wheels(r, 3, 3)
+        seq += "B" if (l < 0 and rr_ < 0) else ("L" if l < 0 < rr_ else ("R" if rr_ < 0 < l else "."))
+    i = seq.index("B")
+    assert seq[i:i + 24] == "B" * 24                   # ~15 cm reverse (24 ticks x 0.1 m/s x 64 ms)
+    assert seq[i + 24:i + 24 + 33] == "L" * 33        # then ~90 deg turn toward the open (left) side
+    assert "R" not in seq
+
+
 def test_sweep():
     sw = Sweep()
     pose = Pose(0, 0, 0.0)
