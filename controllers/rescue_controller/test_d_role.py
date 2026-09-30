@@ -151,6 +151,21 @@ def test_progressive_squeezes_through_narrow_gap():
     assert plan_progressive(raw, (4, 1), (4, 13), radii=(3, 2, 1))[0] == [] or True
 
 
+def test_bad_inputs_do_not_crash():
+    import numpy as np
+    small = np.zeros((3, 3), bool)
+    assert inflate(small, 50).shape == (3, 3)             # radius larger than the map
+    occ = [[FREE, UNKNOWN], [FREE, FREE]]
+    from exploration import is_frontier
+    assert is_frontier(occ, (9, 9)) is False and is_frontier(occ, (-1, 0)) is False
+    sm = SafetyMonitor()
+    for bad in ([], [float("nan")] * 360, [float("inf")] * 360, [0.0] * 360, [None] * 360):
+        out = sm.safe_wheels(bad, 3, 3)
+        assert len(out) == 4
+    assert astar([[0]], (0, 0), (0, 0)) == [(0, 0)]
+    assert toward(Pose(float("nan"), 0, 0), [(1, 0), (2, 0)]) == (0.0, 0.0, False)
+
+
 def test_sweep():
     sw = Sweep()
     pose = Pose(0, 0, 0.0)

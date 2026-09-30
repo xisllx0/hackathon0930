@@ -53,6 +53,8 @@ def toward(pose, path_xy, v=DEFAULT_V, lookahead=LOOKAHEAD, arrive_radius=ARRIVE
     """
     if not path_xy:
         return 0.0, 0.0, True
+    if not all(math.isfinite(v) for v in (pose.x, pose.y, pose.theta)):
+        return 0.0, 0.0, False          # broken pose from localization: stand still
     gx, gy = path_xy[-1]
     goal_dist = math.hypot(gx - pose.x, gy - pose.y)
     if goal_dist <= arrive_radius:

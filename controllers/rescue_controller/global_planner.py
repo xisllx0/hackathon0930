@@ -108,6 +108,8 @@ def inflate(blocked, radius_cells):
         for dc in range(-radius_cells, radius_cells + 1):
             if dr * dr + dc * dc > radius_cells * radius_cells:
                 continue
+            if abs(dr) >= rows or abs(dc) >= cols:
+                continue          # shift larger than the map: nothing to copy
             r0, r1 = max(0, dr), min(rows, rows + dr)
             c0, c1 = max(0, dc), min(cols, cols + dc)
             out[r0 - dr:r1 - dr, c0 - dc:c1 - dc] |= b[r0:r1, c0:c1]

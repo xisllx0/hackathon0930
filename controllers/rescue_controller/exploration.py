@@ -55,6 +55,8 @@ def reachable_cells(blocked, start, occ=None):
 
 def is_frontier(occ, cell):
     r, c = cell            # works on lists and numpy arrays without copying the map
+    if not (0 <= r < len(occ) and 0 <= c < len(occ[0])):
+        return False
     if occ[r][c] != FREE:
         return False
     rows, cols = len(occ), len(occ[0])
