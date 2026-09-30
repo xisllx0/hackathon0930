@@ -1,6 +1,6 @@
 # controllers/rescue_controller/rescue_controller.py
 from controller import Robot
-from target_detection import TargetDetector
+from controllers.rescue_controller.target_detection import TargetDetector
 
 robot = Robot()
 timestep = int(robot.getBasicTimeStep())
