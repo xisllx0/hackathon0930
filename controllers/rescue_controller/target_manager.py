@@ -1,92 +1,104 @@
-from controller import Robot
-import cv2
-import numpy as np
+"""빨간 사과의 거리 확인, 중복 방지, 방문 기록.
+
+Webots Robot이나 별도의 step 루프를 만들지 않는다.
+메인 루프에서 YOLO 탐지 결과가 있을 때 observe()를 호출한다.
+"""
+from dataclasses import dataclass
 import math
+from statistics import median
 
-robot = Robot()
-timestep = int(robot.getBasicTimeStep())
+from data_types import Target
 
-camera = robot.getDevice("camera")
-camera.enable(timestep)
 
-width = camera.getWidth()
-height = camera.getHeight()
-fov = camera.getFov()
+@dataclass
+class _Track:
+    target: Target
+    observations: int = 1
 
-while robot.step(timestep) != -1:
-    image_bytes = camera.getImage()
-    if image_bytes is None:
-        continue
 
-    frame_bgra = np.frombuffer(image_bytes, np.uint8).reshape(
-        (height, width, 4)
-    )
-    frame_bgr = cv2.cvtColor(frame_bgra, cv2.COLOR_BGRA2BGR)
+class TargetManager:
+    def __init__(self, match_distance=0.6, visit_distance=0.4,
+                 max_distance=3.2, min_observations=2):
+        self._tracks = []
+        self.match_distance = match_distance
+        self.visit_distance = visit_distance
+        self.max_distance = max_distance
+        self.min_observations = min_observations
 
-    # 빨간색은 HSV 색상 범위의 양 끝에 걸쳐 있어서 두 범위를 합친다.
-    hsv = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2HSV)
-    red_mask_1 = cv2.inRange(
-        hsv,
-        np.array([0, 80, 60], dtype=np.uint8),
-        np.array([10, 255, 255], dtype=np.uint8),
-    )
-    red_mask_2 = cv2.inRange(
-        hsv,
-        np.array([170, 80, 60], dtype=np.uint8),
-        np.array([179, 255, 255], dtype=np.uint8),
-    )
-    mask = cv2.bitwise_or(red_mask_1, red_mask_2)
+    @property
+    def targets(self):
+        return [track.target for track in self._tracks]
 
-    # 작은 잡음 제거, 끊어진 빨간 영역 연결
-    kernel = np.ones((5, 5), np.uint8)
-    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
-    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+    def _lidar_distance(self, ranges, bearing):
+        """프로젝트 LiDAR 규칙: 180 앞, 90 왼쪽, 270 오른쪽."""
+        n = len(ranges)
+        if n == 0:
+            return None
+        center = round(n / 2 - bearing * n / (2 * math.pi)) % n
+        candidates = []
+        for offset in range(-2, 3):
+            value = ranges[(center + offset) % n]
+            if value is not None and math.isfinite(value) and 0.12 < value <= self.max_distance:
+                candidates.append(value)
+        # 사과 방향에서 유효한 거리 샘플이 없으면 임의의 거리를 만들지 않는다.
+        return float(median(candidates)) if len(candidates) >= 2 else None
 
-    contours, _ = cv2.findContours(
-        mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE
-    )
+    def observe(self, pose, detection, ranges):
+        """Detection과 현재 LiDAR를 받아 사과를 등록한다. 등록 시 Target 반환."""
+        if detection.class_name != 'red_apple':
+            return None
+        distance = detection.distance
+        if distance is None:
+            distance = self._lidar_distance(ranges, detection.bearing)
+        if distance is None or not math.isfinite(distance):
+            return None
+        detection.distance = distance
 
-    detections = []
+        heading = pose.theta + detection.bearing
+        x = pose.x + distance * math.cos(heading)
+        y = pose.y + distance * math.sin(heading)
+        closest = min(self._tracks,
+                      key=lambda track: math.hypot(track.target.x-x, track.target.y-y),
+                      default=None)
+        if closest is not None and math.hypot(closest.target.x-x,
+                                               closest.target.y-y) <= self.match_distance:
+            if not closest.target.visited:
+                count = min(closest.observations, 9)
+                closest.target.x = (closest.target.x * count + x) / (count + 1)
+                closest.target.y = (closest.target.y * count + y) / (count + 1)
+            closest.observations += 1
+            return closest.target
 
-    # max()를 쓰지 않고 모든 빨간 영역을 확인한다.
-    for contour in contours:
-        if cv2.contourArea(contour) < 80:
-            continue
+        # 목표는 두 개지만 오탐을 고려해 후보는 더 받을 수 있다.
+        track = _Track(Target(x=x, y=y))
+        self._tracks.append(track)
+        return track.target
 
-        x, y, w, h = cv2.boundingRect(contour)
-        center_x = x + w / 2
-        center_y = y + h / 2
+    def next_target(self, pose):
+        candidates = [track.target for track in self._tracks
+                      if not track.target.visited
+                      and track.observations >= self.min_observations]
+        return min(candidates,
+                   key=lambda target: math.hypot(target.x-pose.x,
+                                                 target.y-pose.y),
+                   default=None)
 
-        # 화면 왼쪽이면 양수, 오른쪽이면 음수 (라디안)
-        bearing = math.atan(
-            ((width / 2 - center_x) / (width / 2))
-            * math.tan(fov / 2)
-        )
+    def check_visit(self, pose):
+        """충분히 관측한 사과에 가까이 갔을 때에만 방문 처리."""
+        for track in self._tracks:
+            target = track.target
+            if (not target.visited
+                    and track.observations >= self.min_observations
+                    and math.hypot(target.x-pose.x,
+                                   target.y-pose.y) <= self.visit_distance):
+                target.visited = True
+                return target
+        return None
 
-        detections.append({
-            "bearing": bearing,
-            "distance": None,  # 거리 확인 전에는 임의로 넣지 않음
-            "center": (center_x, center_y),
-            "bbox": (x, y, x + w, y + h),
-        })
+    @property
+    def visited_count(self):
+        return sum(target.visited for target in self.targets)
 
-        cv2.rectangle(
-            frame_bgr, (x, y), (x + w, y + h), (0, 255, 0), 2
-        )
-        cv2.putText(
-            frame_bgr,
-            f"{bearing:+.2f} rad",
-            (x, max(y - 8, 15)),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.5,
-            (0, 255, 0),
-            1,
-        )
-
-    cv2.imshow("Webots Camera", frame_bgr)
-    cv2.imshow("Red Mask", mask)
-
-    if cv2.waitKey(1) & 0xFF == ord("q"):
-        break
-
-cv2.destroyAllWindows()
+    @property
+    def complete(self):
+        return self.visited_count >= 2
