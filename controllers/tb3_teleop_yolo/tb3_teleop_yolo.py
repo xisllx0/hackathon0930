@@ -74,7 +74,7 @@ while robot.step(timestep) != -1:
         source=frame_bgr,
         conf=0.1,     # Confidence Threshold
         iou=0.5,      # IoU Threshold
-        classes=None  # 32: sports ball, 47: apple, 49: orange
+        classes=[47]  # 32: sports ball, 47: apple, 49: orange
     )
     
     output_frame = results[0].plot()

@@ -1,0 +1,9 @@
+CAMERA = 'camera'
+LIDAR = 'LDS-01'
+COMPASS = 'compass'
+LEFT_MOTOR = 'left wheel motor'
+RIGHT_MOTOR = 'right wheel motor'
+MAX_WHEEL_SPEED = 3.0       # Webots 모터 명령 한계(rad/s)
+WHEEL_RADIUS = 0.033        # m
+WHEEL_BASE = 0.177         # m; 실제 로봇 값에 맞춰 확인
+YOLO_EVERY_STEPS = 5
