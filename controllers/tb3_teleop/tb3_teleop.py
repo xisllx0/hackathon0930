@@ -28,8 +28,6 @@ right_motor.setVelocity(0.0)
 # 바퀴 회전 속도 [rad/s]
 SPEED = 3.0
 
-
-
 while robot.step(timestep) != -1:
     key = keyboard.getKey()
 
