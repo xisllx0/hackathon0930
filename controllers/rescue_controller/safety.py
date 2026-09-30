@@ -6,8 +6,8 @@ LiDAR (LDS-01): 360 beams, index 180 = front, 0 = back, 90 = left, 270 = right
 import math
 
 ROBOT_RADIUS = 0.105
-STOP_DIST = 0.20         # m, front-sector obstacle distance that triggers a stop
-SLOW_DIST = 0.40
+STOP_DIST = 0.15         # m; must NOT exceed the planner's wall margin (0.15 m) or path and safety deadlock at corners
+SLOW_DIST = 0.32
 MIN_SLOW_SCALE = 0.45    # never crawl slower than this fraction while merely 'slowing'
 FRONT_HALF_ANGLE = 15    # beams on each side of index 180 (narrow: doorframes beside us must not count)
 STOP_TICKS_FOR_REPLAN = 15
