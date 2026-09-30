@@ -1,65 +1,54 @@
-# controllers/rescue_controller/robot_io.py
-from controller import Robot
-
-from config import (
-    CAMERA,
-    LIDAR,
-    LEFT_MOTOR,
-    RIGHT_MOTOR,
-    LEFT_ENCODER,
-    RIGHT_ENCODER,
-    MAX_WHEEL_SPEED,
-)
+import math
+from config import (CAMERA, COMPASS, LIDAR, LEFT_MOTOR, RIGHT_MOTOR,
+                    MAX_WHEEL_SPEED)
 
 
 class RobotIO:
-    def __init__(self):
-        self.robot = Robot()
-        self.timestep = int(self.robot.getBasicTimeStep())
+    def __init__(self, robot):
+        self.robot = robot
+        self.timestep = int(robot.getBasicTimeStep())
+        self.left_motor = robot.getDevice(LEFT_MOTOR)
+        self.right_motor = robot.getDevice(RIGHT_MOTOR)
+        self.camera = robot.getDevice(CAMERA)
+        self.lidar = robot.getDevice(LIDAR)
+        self.compass = robot.getDevice(COMPASS)
+        self.left_encoder = self.left_motor.getPositionSensor()
+        self.right_encoder = self.right_motor.getPositionSensor()
+        for sensor in (self.left_encoder, self.right_encoder,
+                       self.camera, self.lidar, self.compass):
+            sensor.enable(self.timestep)
+        self.left_motor.setPosition(float('inf'))
+        self.right_motor.setPosition(float('inf'))
+        self.stop()
 
-        # 장치 가져오기
-        self.camera = self.robot.getDevice(CAMERA)
-        self.lidar = self.robot.getDevice(LIDAR)
-        self.left_motor = self.robot.getDevice(LEFT_MOTOR)
-        self.right_motor = self.robot.getDevice(RIGHT_MOTOR)
-        self.left_encoder = self.robot.getDevice(LEFT_ENCODER)
-        self.right_encoder = self.robot.getDevice(RIGHT_ENCODER)
-
-        # 센서 켜기
-        self.camera.enable(self.timestep)
-        self.lidar.enable(self.timestep)
-        self.left_encoder.enable(self.timestep)
-        self.right_encoder.enable(self.timestep)
-
-        # 바퀴를 속도 제어 모드로 설정하고 정지
-        self.left_motor.setPosition(float("inf"))
-        self.right_motor.setPosition(float("inf"))
-        self.wheels(0.0, 0.0)
-
-    def step(self) -> bool:
+    def step(self):
         return self.robot.step(self.timestep) != -1
 
-    def wheels(self, left: float, right: float) -> None:
-        left = max(-MAX_WHEEL_SPEED, min(MAX_WHEEL_SPEED, left))
-        right = max(-MAX_WHEEL_SPEED, min(MAX_WHEEL_SPEED, right))
+    def time(self):
+        return self.robot.getTime()
 
-        self.left_motor.setVelocity(left)
-        self.right_motor.setVelocity(right)
+    def get_left_encoder(self):
+        return self.left_encoder.getValue()
 
-    def encoder_positions(self) -> tuple[float, float]:
-        return (
-            self.left_encoder.getValue(),
-            self.right_encoder.getValue(),
-        )
+    def get_right_encoder(self):
+        return self.right_encoder.getValue()
+
+    def encoder_positions(self):
+        return self.get_left_encoder(), self.get_right_encoder()
+
+    def get_yaw(self):
+        values = self.compass.getValues()
+        return math.atan2(values[0], values[1])
 
     def lidar_ranges(self):
         return self.lidar.getRangeImage()
 
-    def camera_image(self):
-        return self.camera.getImage()
+    def wheels(self, left, right):
+        # 속도 비율을 유지하며 두 바퀴 모두 한계 내로 축소한다.
+        peak = max(abs(left), abs(right))
+        scale = max(1.0, peak / MAX_WHEEL_SPEED)
+        self.left_motor.setVelocity(left / scale)
+        self.right_motor.setVelocity(right / scale)
 
-    def time(self) -> float:
-        return self.robot.getTime()
-
-    def stop(self) -> None:
+    def stop(self):
         self.wheels(0.0, 0.0)

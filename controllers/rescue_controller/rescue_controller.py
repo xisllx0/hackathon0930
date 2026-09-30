@@ -1,57 +1,45 @@
+"""통합용 단일 Webots 루프. 지도/목표 코드가 연결되기 전에는 정지."""
+from controller import Robot
 from robot_io import RobotIO
-from localization import Odometry
+from localization import Localization
+from mission import Mission
 from target_detection import TargetDetector
+from config import YOLO_EVERY_STEPS
 
 
 def main():
-    io = RobotIO()
-    detector = TargetDetector()  
+    robot = Robot()
+    io = RobotIO(robot)
+    detector = TargetDetector()
+    localizer = Localization()
+    mission = Mission()
 
-    # 센서의 첫 측정값 확보
     if not io.step():
         return
-
-    odometry = Odometry(*io.encoder_positions())
+    # 첫 센서 샘플을 기준값으로 잡는다.
+    pose = localizer.update(*io.encoder_positions(), io.get_yaw())
+    mission.set_home(pose)
+    print('HOME 저장', mission.home_xy())
     step_count = 0
-
     try:
-        while io.step():  # 프로젝트 전체에서 사용하는 메인 루프 하나
-            # 1. 현재 위치 갱신
-            pose = odometry.update(*io.encoder_positions())
-
-            # 2. 최신 LiDAR 측정
+        while io.step():
+            pose = localizer.update(*io.encoder_positions(), io.get_yaw())
             ranges = io.lidar_ranges()
-
-            # 3. 사과 탐지: YOLO는 무거우므로 5스텝마다 실행
             detections = []
-            if step_count % 5 == 0:
+            if step_count % YOLO_EVERY_STEPS == 0:
                 detections = detector.detect_camera(io.camera)
 
-            # 4. 앞으로 A의 지도 갱신 연결
-            # grid.update(pose, ranges)
-
-            # 5. 앞으로 C의 목표 위치·방문 목록 연결
-            # for detection in detections:
-            #     target_manager.observe(pose, detection)
-
-            # 6. 앞으로 B의 미션과 D의 경로·주행 연결
-            # goal = mission.choose_goal(...)
-            # path = planner.plan(...)
-            # left_speed, right_speed = drive.follow(pose, path)
-            # left_speed, right_speed = safety.check(ranges, left_speed, right_speed)
-            # io.wheels(left_speed, right_speed)
-
-            # 주행 코드가 연결되기 전까지는 정지
+            # 이후 순서: 지도 갱신 -> 사과 거리 확인/목표 관리 -> 목표 선택
+            # -> navigation.py 경로 -> drive.toward -> safety.safe_wheels -> io.wheels
+            # 아직 지도/목표 연결 전이므로 모터는 정지시킨다.
             io.stop()
-
             if detections:
-                print("현재 위치:", pose)
-                print("발견한 빨간 사과 후보:", detections)
-
+                print('Pose:', pose.x, pose.y, pose.yaw,
+                      '빨간 사과 후보:', detections)
             step_count += 1
     finally:
         io.stop()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
