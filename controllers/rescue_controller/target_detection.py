@@ -87,6 +87,10 @@ def get_red_ratio(
     return red_pixels / roi.size
 
 
+# 실측: 화면 폭 55px @ 1.0m -> 사과 지름 약 0.10 m (proto의 0.05는 반지름)
+APPLE_DIAMETER_M = 0.10
+
+
 class TargetDetector:
     """현재 카메라 화면에서 빨간 사과 후보를 찾는다."""
 
@@ -199,11 +203,59 @@ class TargetDetector:
                     bbox=bbox,
                     bearing=bearing,
                     red_ratio=red_ratio,
-                    distance=None,
+                    distance=self._pinhole_distance(x2 - x1, y2 - y1, focal_pixels),
                 )
             )
 
+        if not detections:
+            # YOLO(nano)는 바닥의 작은 사과를 거의 못 잡는다(실측: 사과가 보이는 프레임의 약 20%).
+            # 이때만 색+모양 기반 검출을 보조로 사용한다.
+            detections = self._color_detections(frame_bgr, focal_pixels)
+
         return detections
+
+    def _pinhole_distance(self, w_px, h_px, focal_pixels):
+        """사과 지름(약 10cm)과 화면 폭으로 거리 계산. 일부만 보이면 None(LiDAR는 바닥 사과를 못 봄)."""
+        if w_px < 8 or h_px < 8:
+            return None
+        if not 0.7 <= w_px / h_px <= 1.4:
+            return None
+        return APPLE_DIAMETER_M * focal_pixels / w_px
+
+    def _color_detections(self, frame_bgr, focal_pixels):
+        """진한 빨강 + 둥근 모양 + 화면 가장자리에 안 잘림 + 천장 쪽이 아님."""
+        height, width = frame_bgr.shape[:2]
+        hsv = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2HSV)
+        mask = (cv2.inRange(hsv, (0, 150, 70), (8, 255, 255))
+                | cv2.inRange(hsv, (172, 150, 70), (179, 255, 255)))
+        mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
+        contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        found = []
+        for contour in contours:
+            area = cv2.contourArea(contour)
+            if area < 40:
+                continue
+            x, y, w, h = cv2.boundingRect(contour)
+            perimeter = cv2.arcLength(contour, True)
+            circularity = 4.0 * math.pi * area / (perimeter * perimeter + 1e-9)
+            if circularity < 0.6 or not 0.7 <= w / h <= 1.4:
+                continue
+            if x <= 1 or x + w >= width - 1:      # 화면 가장자리에 잘린 일부만 보이는 경우
+                continue
+            if y + h / 2.0 < height * 0.25:       # 화면 맨 위쪽(높은 곳의 물체)
+                continue
+            bearing = math.atan((width / 2.0 - (x + w / 2.0)) / focal_pixels)
+            found.append(
+                Detection(
+                    class_name="red_apple",
+                    confidence=0.5,
+                    bbox=(x, y, x + w, y + h),
+                    bearing=bearing,
+                    red_ratio=1.0,
+                    distance=self._pinhole_distance(w, h, focal_pixels),
+                )
+            )
+        return found
 
     def detect_camera(self, camera) -> list[Detection]:
         """Webots 카메라의 현재 화면에서 빨간 사과를 찾는다."""

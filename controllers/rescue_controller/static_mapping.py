@@ -16,6 +16,7 @@ class StaticMapping:
         self.max_range = max_range
         self.grid = [[UNKNOWN for _ in range(size)] for _ in range(size)]
         self.origin = size // 2
+        self.lo = [[0 for _ in range(size)] for _ in range(size)]   # log-odds: >=3 wall, <=0 seen free
         # navigation.Navigator가 기대하는 월드 좌하단 좌표 (m)
         self.origin_xy = (-self.origin * resolution,
                           -self.origin * resolution)
@@ -41,6 +42,7 @@ class StaticMapping:
         if n == 0:
             return
 
+        touched = set()
         for i, raw in enumerate(ranges):
             if raw is None or not isinstance(raw, (int, float)) or math.isnan(raw) or raw <= 0:
                 continue
@@ -52,21 +54,27 @@ class StaticMapping:
             end_r, end_c = self.world_to_grid(end_x, end_y)
 
             steps = max(abs(end_r - start_r), abs(end_c - start_c), 1)
-            # 끝점은 hit일 때만 장애물. 열린 광선은 끝점도 빈칸.
-            count = steps if hit else steps + 1
+            count = steps if hit else steps + 1          # open beam: the end cell is free too
             for k in range(count):
                 t = k / steps
                 r = round(start_r + t * (end_r - start_r))
                 c = round(start_c + t * (end_c - start_c))
                 if self._inside(r, c):
-                    self.grid[r][c] = FREE
+                    self.lo[r][c] = max(self.lo[r][c] - 1, -4)
+                    touched.add((r, c))
             if hit and self._inside(end_r, end_c):
-                hits.add((end_r, end_c))
+                self.lo[end_r][end_c] = min(self.lo[end_r][end_c] + 3, 8)
+                touched.add((end_r, end_c))
 
-        # 다른 광선의 빈칸 기록이 실제 장애물 끝점을 지우지 않도록 마지막에 기록.
-        for r, c in hits:
-            self.grid[r][c] = OCCUPIED
+        # a cell only becomes wall/free after repeated evidence, so one grazing ray cannot erase a wall
+        for r, c in touched:
+            v = self.lo[r][c]
+            if v >= 3:
+                self.grid[r][c] = OCCUPIED
+            elif v <= 0:
+                self.grid[r][c] = FREE
         if self._inside(start_r, start_c):
+            self.lo[start_r][start_c] = min(self.lo[start_r][start_c], -2)
             self.grid[start_r][start_c] = FREE
 
     def get_occ(self):

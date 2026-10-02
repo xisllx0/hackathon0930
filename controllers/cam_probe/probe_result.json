@@ -1,0 +1,1429 @@
+[
+ {
+  "tag": "pos_a1_d040_ang000",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.4,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d040_ang045",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.4,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d040_ang090",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.4,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d040_ang135",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.4,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d040_ang225",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.4,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d040_ang315",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.4,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d070_ang045",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d070_ang090",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d070_ang135",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d070_ang180",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d070_ang225",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d070_ang270",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d070_ang315",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d100_ang000",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d100_ang045",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d100_ang090",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d100_ang135",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d100_ang180",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d100_ang225",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d100_ang270",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d100_ang315",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d150_ang000",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d150_ang045",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d150_ang090",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d150_ang135",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d150_ang180",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d150_ang225",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d150_ang270",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d150_ang315",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d200_ang045",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 2.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d200_ang090",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 2.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d200_ang135",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 2.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d200_ang225",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 2.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d200_ang270",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 2.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d200_ang315",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 2.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d250_ang045",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 2.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d250_ang090",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 2.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d250_ang135",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 2.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d250_ang225",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 2.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d250_ang270",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 2.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d300_ang000",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d300_ang045",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d300_ang180",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d300_ang225",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a1_d300_ang270",
+  "kind": "pos",
+  "apple": 1,
+  "dist": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d040_ang000",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.4,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d040_ang045",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.4,
+  "yolo_hits": 1,
+  "yolo": [
+   [
+    0.51,
+    0.96
+   ]
+  ]
+ },
+ {
+  "tag": "pos_a2_d040_ang090",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.4,
+  "yolo_hits": 1,
+  "yolo": [
+   [
+    0.28,
+    0.95
+   ]
+  ]
+ },
+ {
+  "tag": "pos_a2_d040_ang180",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.4,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d040_ang225",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.4,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d040_ang315",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.4,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d070_ang000",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d070_ang045",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.7,
+  "yolo_hits": 1,
+  "yolo": [
+   [
+    0.51,
+    1.0
+   ]
+  ]
+ },
+ {
+  "tag": "pos_a2_d070_ang090",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d070_ang180",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d070_ang225",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d070_ang270",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d070_ang315",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d100_ang000",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d100_ang045",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.0,
+  "yolo_hits": 1,
+  "yolo": [
+   [
+    0.79,
+    1.0
+   ]
+  ]
+ },
+ {
+  "tag": "pos_a2_d100_ang090",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.0,
+  "yolo_hits": 1,
+  "yolo": [
+   [
+    0.48,
+    0.89
+   ]
+  ]
+ },
+ {
+  "tag": "pos_a2_d100_ang135",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d100_ang225",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d100_ang315",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d150_ang045",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.5,
+  "yolo_hits": 1,
+  "yolo": [
+   [
+    0.63,
+    1.0
+   ]
+  ]
+ },
+ {
+  "tag": "pos_a2_d150_ang090",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d150_ang135",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d150_ang180",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d150_ang225",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d150_ang270",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d150_ang315",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d200_ang000",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.0,
+  "yolo_hits": 1,
+  "yolo": [
+   [
+    0.38,
+    1.0
+   ]
+  ]
+ },
+ {
+  "tag": "pos_a2_d200_ang045",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.0,
+  "yolo_hits": 1,
+  "yolo": [
+   [
+    0.72,
+    1.0
+   ]
+  ]
+ },
+ {
+  "tag": "pos_a2_d200_ang090",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d200_ang135",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d200_ang180",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d200_ang225",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d200_ang270",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d200_ang315",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d250_ang000",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d250_ang045",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d250_ang090",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.5,
+  "yolo_hits": 1,
+  "yolo": [
+   [
+    0.28,
+    0.99
+   ]
+  ]
+ },
+ {
+  "tag": "pos_a2_d250_ang135",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d250_ang180",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d250_ang225",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d250_ang270",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d250_ang315",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 2.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d300_ang000",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d300_ang045",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d300_ang090",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d300_ang180",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d300_ang225",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d300_ang270",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "pos_a2_d300_ang315",
+  "kind": "pos",
+  "apple": 2,
+  "dist": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_000",
+  "kind": "neg",
+  "x": -4.77,
+  "y": -2.36,
+  "yaw": -2.73,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_001",
+  "kind": "neg",
+  "x": -12.33,
+  "y": 1.24,
+  "yaw": -1.51,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_002",
+  "kind": "neg",
+  "x": -9.5,
+  "y": 3.93,
+  "yaw": -0.19,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_003",
+  "kind": "neg",
+  "x": -10.57,
+  "y": -2.21,
+  "yaw": 2.31,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_004",
+  "kind": "neg",
+  "x": -5.8,
+  "y": -0.4,
+  "yaw": 1.08,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_005",
+  "kind": "neg",
+  "x": -11.68,
+  "y": -0.11,
+  "yaw": 0.57,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_006",
+  "kind": "neg",
+  "x": -8.64,
+  "y": -12.47,
+  "yaw": 2.3,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_007",
+  "kind": "neg",
+  "x": -6.45,
+  "y": -0.78,
+  "yaw": 2.38,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_008",
+  "kind": "neg",
+  "x": -3.36,
+  "y": 2.66,
+  "yaw": -0.66,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_009",
+  "kind": "neg",
+  "x": -1.25,
+  "y": -11.34,
+  "yaw": -2.29,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_010",
+  "kind": "neg",
+  "x": -9.72,
+  "y": 3.41,
+  "yaw": -0.4,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_011",
+  "kind": "neg",
+  "x": -4.48,
+  "y": -7.88,
+  "yaw": 0.05,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_012",
+  "kind": "neg",
+  "x": -7.56,
+  "y": -7.03,
+  "yaw": 0.53,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_013",
+  "kind": "neg",
+  "x": -5.02,
+  "y": 2.37,
+  "yaw": 1.14,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_014",
+  "kind": "neg",
+  "x": -0.61,
+  "y": 1.56,
+  "yaw": 3.08,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_015",
+  "kind": "neg",
+  "x": -3.91,
+  "y": -10.23,
+  "yaw": 2.27,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_016",
+  "kind": "neg",
+  "x": -0.15,
+  "y": 2.38,
+  "yaw": 0.43,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_017",
+  "kind": "neg",
+  "x": -3.36,
+  "y": -9.41,
+  "yaw": 2.08,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_018",
+  "kind": "neg",
+  "x": -5.16,
+  "y": -8.16,
+  "yaw": -2.74,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_019",
+  "kind": "neg",
+  "x": -1.57,
+  "y": 3.83,
+  "yaw": -2.59,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_020",
+  "kind": "neg",
+  "x": -2.25,
+  "y": -6.02,
+  "yaw": -2.19,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_021",
+  "kind": "neg",
+  "x": -8.74,
+  "y": 0.07,
+  "yaw": 2.34,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_022",
+  "kind": "neg",
+  "x": -11.93,
+  "y": -2.55,
+  "yaw": -2.86,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_023",
+  "kind": "neg",
+  "x": -3.3,
+  "y": -7.37,
+  "yaw": 2.39,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_024",
+  "kind": "neg",
+  "x": 0.05,
+  "y": -4.41,
+  "yaw": 3.13,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_025",
+  "kind": "neg",
+  "x": -8.54,
+  "y": -11.69,
+  "yaw": 0.63,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_026",
+  "kind": "neg",
+  "x": -12.1,
+  "y": -9.64,
+  "yaw": -0.58,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_027",
+  "kind": "neg",
+  "x": -4.69,
+  "y": -10.34,
+  "yaw": -2.87,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_028",
+  "kind": "neg",
+  "x": -1.39,
+  "y": -7.66,
+  "yaw": 2.88,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_029",
+  "kind": "neg",
+  "x": -1.02,
+  "y": -6.58,
+  "yaw": -0.25,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_030",
+  "kind": "neg",
+  "x": -5.84,
+  "y": -2.05,
+  "yaw": 0.6,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_031",
+  "kind": "neg",
+  "x": -5.34,
+  "y": -2.46,
+  "yaw": 2.77,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_032",
+  "kind": "neg",
+  "x": -6.01,
+  "y": -5.67,
+  "yaw": 1.38,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_033",
+  "kind": "neg",
+  "x": -9.46,
+  "y": -7.88,
+  "yaw": 3.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_034",
+  "kind": "neg",
+  "x": -5.83,
+  "y": -3.68,
+  "yaw": -3.07,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_035",
+  "kind": "neg",
+  "x": -7.19,
+  "y": -3.14,
+  "yaw": -3.02,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_036",
+  "kind": "neg",
+  "x": -4.62,
+  "y": -2.25,
+  "yaw": -2.76,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_037",
+  "kind": "neg",
+  "x": -4.47,
+  "y": -5.07,
+  "yaw": 1.13,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_038",
+  "kind": "neg",
+  "x": -7.99,
+  "y": -0.98,
+  "yaw": 1.5,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_039",
+  "kind": "neg",
+  "x": -12.22,
+  "y": -11.97,
+  "yaw": 1.11,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_040",
+  "kind": "neg",
+  "x": -0.17,
+  "y": -8.73,
+  "yaw": -0.27,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_041",
+  "kind": "neg",
+  "x": -4.91,
+  "y": -7.56,
+  "yaw": -0.85,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_042",
+  "kind": "neg",
+  "x": -8.5,
+  "y": -6.72,
+  "yaw": 0.6,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_043",
+  "kind": "neg",
+  "x": -8.65,
+  "y": -6.59,
+  "yaw": 1.71,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_044",
+  "kind": "neg",
+  "x": -12.16,
+  "y": -3.32,
+  "yaw": 1.48,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_045",
+  "kind": "neg",
+  "x": -8.53,
+  "y": -9.22,
+  "yaw": 1.91,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_046",
+  "kind": "neg",
+  "x": -9.44,
+  "y": -9.81,
+  "yaw": -0.41,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_047",
+  "kind": "neg",
+  "x": -3.56,
+  "y": -11.27,
+  "yaw": -1.12,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_048",
+  "kind": "neg",
+  "x": -8.23,
+  "y": 1.17,
+  "yaw": -0.39,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_049",
+  "kind": "neg",
+  "x": -1.55,
+  "y": -10.12,
+  "yaw": -1.03,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_050",
+  "kind": "neg",
+  "x": -4.18,
+  "y": 2.04,
+  "yaw": -0.31,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_051",
+  "kind": "neg",
+  "x": -9.62,
+  "y": -10.94,
+  "yaw": 0.19,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_052",
+  "kind": "neg",
+  "x": -10.06,
+  "y": 0.72,
+  "yaw": 2.13,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_053",
+  "kind": "neg",
+  "x": -10.15,
+  "y": -8.26,
+  "yaw": 1.93,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_054",
+  "kind": "neg",
+  "x": -4.28,
+  "y": 0.71,
+  "yaw": -0.97,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_055",
+  "kind": "neg",
+  "x": -10.84,
+  "y": -8.04,
+  "yaw": 1.85,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_056",
+  "kind": "neg",
+  "x": -9.03,
+  "y": -7.11,
+  "yaw": -0.52,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_057",
+  "kind": "neg",
+  "x": -7.13,
+  "y": -6.04,
+  "yaw": 2.64,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_058",
+  "kind": "neg",
+  "x": -10.5,
+  "y": -12.92,
+  "yaw": 2.79,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_059",
+  "kind": "neg",
+  "x": -1.24,
+  "y": 3.78,
+  "yaw": -0.41,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_060",
+  "kind": "neg",
+  "x": -0.34,
+  "y": 2.77,
+  "yaw": -1.75,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_061",
+  "kind": "neg",
+  "x": -2.96,
+  "y": 1.22,
+  "yaw": 1.02,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_062",
+  "kind": "neg",
+  "x": -5.86,
+  "y": -8.09,
+  "yaw": -1.0,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_063",
+  "kind": "neg",
+  "x": -9.59,
+  "y": -11.84,
+  "yaw": 0.56,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_064",
+  "kind": "neg",
+  "x": -8.83,
+  "y": 0.77,
+  "yaw": -2.86,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_065",
+  "kind": "neg",
+  "x": -0.93,
+  "y": -1.21,
+  "yaw": 2.66,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_066",
+  "kind": "neg",
+  "x": -1.02,
+  "y": 2.29,
+  "yaw": 0.48,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_067",
+  "kind": "neg",
+  "x": -12.33,
+  "y": -0.33,
+  "yaw": -2.06,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_068",
+  "kind": "neg",
+  "x": -8.66,
+  "y": -1.73,
+  "yaw": 0.16,
+  "yolo_hits": 0,
+  "yolo": []
+ },
+ {
+  "tag": "neg_069",
+  "kind": "neg",
+  "x": -7.2,
+  "y": 2.96,
+  "yaw": 0.7,
+  "yolo_hits": 0,
+  "yolo": []
+ }
+]

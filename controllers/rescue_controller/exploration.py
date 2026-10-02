@@ -203,15 +203,19 @@ class Explorer:
     def add_viewed_blocks(self, blocks):
         self.covered.update(map(tuple, blocks))
 
-    def goal_still_valid(self, occ, robot_cell):
+    def goal_still_valid(self, occ, robot_cell, blocked=None):
         if self.goal is None or self.goal == tuple(robot_cell):
             return False
+        if blocked is not None:
+            r, c = self.goal
+            if not (0 <= r < len(blocked) and 0 <= c < len(blocked[0])) or blocked[r][c]:
+                return False              # the goal got walled in (inflation): pick another one
         if self.mode == "frontier":
             return is_frontier(occ, self.goal)
         return (self.goal[0] // self.block, self.goal[1] // self.block) not in self.covered
 
     def pick(self, occ, blocked, robot_cell):
-        if self.goal_still_valid(occ, robot_cell):
+        if self.goal_still_valid(occ, robot_cell, blocked):
             return self.goal
         self.goal = next_frontier(occ, blocked, robot_cell, self.failed, self.min_cluster,
                                   skip_radius=self.skip_radius)

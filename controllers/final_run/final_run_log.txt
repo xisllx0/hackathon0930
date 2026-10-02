@@ -1,0 +1,385 @@
+[MISSION] HOME 저장 (0.0, 0.0)
+[MISSION] EXPLORE
+TR: explorer.pick -> (139, 152) mode=frontier failed=0 covered=0 robot_cell=(149, 150)
+TR: step 25 pose=(0.06,-0.04,-46deg) front=1.26 in=(3.00,0.75) out=(3.00,0.75) stopped=False replan=False
+TR: step 50 pose=(0.10,-0.13,-80deg) front=0.64 in=(2.76,3.00) out=(2.76,3.00) stopped=False replan=False
+TR: toward path_len=16 goal=(0.15000000000000036, -1.049999999999999) arrived=False
+TR: explorer.pick -> (139, 151) mode=frontier failed=0 covered=0 robot_cell=(148, 151)
+TR: step 75 pose=(0.13,-0.28,-81deg) front=0.48 in=(3.00,2.75) out=(3.00,2.75) stopped=False replan=False
+TR: step 100 pose=(0.17,-0.39,-53deg) front=1.68 in=(0.98,3.00) out=(0.98,3.00) stopped=False replan=False
+TR: toward path_len=13 goal=(0.15000000000000036, -1.049999999999999) arrived=False
+TR: explorer.pick -> (160, 166) mode=frontier failed=0 covered=0 robot_cell=(145, 152)
+TR: step 125 pose=(0.26,-0.46,-32deg) front=0.88 in=(0.89,3.00) out=(0.89,3.00) stopped=False replan=False
+TR: step 150 pose=(0.37,-0.49,-2deg) front=0.83 in=(1.83,3.00) out=(1.83,3.00) stopped=False replan=False
+TR: explorer.pick -> (144, 177) mode=frontier failed=0 covered=0 robot_cell=(145, 154)
+TR: step 175 pose=(0.51,-0.48,9deg) front=1.24 in=(3.00,2.88) out=(3.00,2.88) stopped=False replan=False
+TR: toward path_len=29 goal=(2.75, -0.5499999999999989) arrived=False
+TR: step 200 pose=(0.66,-0.46,6deg) front=1.12 in=(3.00,2.74) out=(3.00,2.74) stopped=False replan=False
+TR: explorer.pick -> (144, 177) mode=frontier failed=0 covered=0 robot_cell=(145, 157)
+TR: step 225 pose=(0.81,-0.45,2deg) front=0.97 in=(3.00,2.86) out=(3.00,2.86) stopped=False replan=False
+TR: toward path_len=25 goal=(2.75, -0.5499999999999989) arrived=False
+TR: step 250 pose=(0.97,-0.45,-0deg) front=0.82 in=(3.00,2.94) out=(3.00,2.94) stopped=False replan=False
+TR: explorer.pick -> (161, 165) mode=frontier failed=0 covered=0 robot_cell=(145, 160)
+TR: step 275 pose=(1.12,-0.45,-0deg) front=0.66 in=(2.99,3.00) out=(2.99,3.00) stopped=False replan=False
+TR: toward path_len=21 goal=(2.75, -0.5499999999999989) arrived=False
+TR: step 300 pose=(1.28,-0.45,-0deg) front=0.50 in=(2.99,3.00) out=(2.99,3.00) stopped=False replan=False
+TR: explorer.pick -> (144, 177) mode=frontier failed=0 covered=0 robot_cell=(145, 163)
+TR: step 325 pose=(1.41,-0.43,20deg) front=2.16 in=(2.22,3.00) out=(2.22,3.00) stopped=False replan=False
+TR: step 350 pose=(1.50,-0.36,49deg) front=1.43 in=(1.40,3.00) out=(1.40,3.00) stopped=False replan=False
+TR: toward path_len=21 goal=(2.8500000000000014, -0.5499999999999989) arrived=False
+TR: explorer.pick -> (144, 178) mode=frontier failed=0 covered=0 robot_cell=(146, 165)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 375 pose=(1.56,-0.28,48deg) front=1.33 in=(0.85,3.00) out=(0.85,3.00) stopped=False replan=False
+TR: explorer.pick -> (163, 163) mode=frontier failed=0 covered=0 robot_cell=(148, 166)
+TR: step 400 pose=(1.60,-0.18,80deg) front=3.09 in=(3.00,2.85) out=(3.00,2.85) stopped=False replan=False
+TR: toward path_len=20 goal=(1.3500000000000014, 1.4499999999999993) arrived=False
+TR: step 425 pose=(1.63,-0.03,81deg) front=3.09 in=(2.73,3.00) out=(2.73,3.00) stopped=False replan=False
+TR: explorer.pick -> (163, 163) mode=frontier failed=0 covered=0 robot_cell=(150, 166)
+TR: step 450 pose=(1.65,0.12,86deg) front=3.24 in=(2.76,3.00) out=(2.76,3.00) stopped=False replan=False
+TR: step 475 pose=(1.65,0.27,89deg) front=3.10 in=(2.87,3.00) out=(2.87,3.00) stopped=False replan=False
+TR: toward path_len=17 goal=(1.25, 1.4499999999999993) arrived=False
+TR: explorer.pick -> (164, 162) mode=frontier failed=0 covered=0 robot_cell=(153, 166)
+TR: step 500 pose=(1.65,0.43,90deg) front=2.94 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+TR: step 525 pose=(1.65,0.59,90deg) front=2.78 in=(3.00,2.99) out=(3.00,2.99) stopped=False replan=False
+TR: explorer.pick -> (163, 162) mode=frontier failed=0 covered=0 robot_cell=(156, 166)
+TR: toward path_len=12 goal=(1.25, 1.3500000000000014) arrived=False
+TR: step 550 pose=(1.65,0.74,90deg) front=2.62 in=(3.00,2.99) out=(3.00,2.99) stopped=False replan=False
+TR: step 575 pose=(1.65,0.90,90deg) front=2.47 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+TR: explorer.pick -> (164, 159) mode=frontier failed=0 covered=0 robot_cell=(159, 166)
+TR: toward path_len=12 goal=(1.0500000000000007, 1.25) arrived=False
+TR: step 600 pose=(1.65,1.06,90deg) front=2.30 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+TR: explorer.pick -> (161, 160) mode=frontier failed=0 covered=0 robot_cell=(160, 166)
+TR: step 625 pose=(1.65,1.13,134deg) front=1.54 in=(-2.15,2.15) out=(-2.15,2.15) stopped=False replan=False
+TR: explorer.pick -> (158, 176) mode=frontier failed=0 covered=0 robot_cell=(161, 166)
+TR: step 650 pose=(1.65,1.13,-152deg) front=0.30 in=(-2.15,2.15) out=(-2.15,2.15) stopped=False replan=False
+TR: toward path_len=20 goal=(2.650000000000002, 0.8500000000000014) arrived=False
+TR: step 675 pose=(1.62,1.10,-125deg) front=0.32 in=(0.23,3.00) out=(0.14,1.84) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 700 pose=(1.58,1.01,-101deg) front=1.78 in=(3.00,2.89) out=(3.00,2.89) stopped=False replan=False
+TR: explorer.pick -> (158, 176) mode=frontier failed=0 covered=0 robot_cell=(159, 165)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=19 goal=(2.650000000000002, 0.8500000000000014) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 725 pose=(1.59,0.91,-64deg) front=1.47 in=(0.57,3.00) out=(0.57,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 750 pose=(1.67,0.85,-26deg) front=2.42 in=(1.15,3.00) out=(1.15,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: explorer.pick -> (158, 176) mode=frontier failed=0 covered=0 robot_cell=(158, 167)
+TR: step 775 pose=(1.78,0.82,-2deg) front=0.53 in=(1.92,3.00) out=(1.92,3.00) stopped=False replan=False
+TR: toward path_len=16 goal=(2.650000000000002, 0.8500000000000014) arrived=False
+TR: step 800 pose=(1.92,0.83,0deg) front=0.38 in=(3.00,0.75) out=(2.77,0.69) stopped=False replan=False
+TR: step 825 pose=(2.00,0.80,-34deg) front=2.06 in=(3.00,0.63) out=(3.00,0.63) stopped=False replan=False
+TR: explorer.pick -> (158, 176) mode=frontier failed=0 covered=0 robot_cell=(157, 170)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=12 goal=(2.650000000000002, 0.8500000000000014) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 850 pose=(2.09,0.72,-38deg) front=1.83 in=(1.73,3.00) out=(1.73,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.14 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 875 pose=(2.20,0.65,-31deg) front=1.94 in=(3.00,2.67) out=(3.00,2.67) stopped=False replan=False
+TR: explorer.pick -> (158, 179) mode=frontier failed=0 covered=0 robot_cell=(156, 172)
+[PATH] 좁은 통로: 0.14 m 여유
+[PATH] 좁은 통로: 0.14 m 여유
+TR: toward path_len=14 goal=(2.9499999999999993, 0.8500000000000014) arrived=False
+TR: step 900 pose=(2.33,0.59,-22deg) front=2.22 in=(2.12,3.00) out=(2.12,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: explorer.pick -> (159, 173) mode=frontier failed=0 covered=0 robot_cell=(155, 173)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 925 pose=(2.33,0.58,-92deg) front=1.12 in=(2.15,-2.15) out=(2.15,-2.15) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 950 pose=(2.29,0.53,-147deg) front=1.73 in=(3.00,1.13) out=(3.00,1.13) stopped=False replan=False
+TR: toward path_len=10 goal=(2.3500000000000014, 0.9500000000000011) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: explorer.pick -> (160, 174) mode=frontier failed=0 covered=0 robot_cell=(155, 171)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 975 pose=(2.18,0.50,180deg) front=1.06 in=(3.00,0.64) out=(3.00,0.64) stopped=False replan=False
+TR: step 1000 pose=(2.15,0.51,119deg) front=2.95 in=(2.15,-2.15) out=(2.15,-2.15) stopped=False replan=False
+TR: toward path_len=26 goal=(4.25, 0.9500000000000011) arrived=False
+TR: explorer.pick -> (159, 192) mode=frontier failed=0 covered=0 robot_cell=(155, 171)
+TR: step 1025 pose=(2.16,0.53,61deg) front=0.33 in=(3.00,0.46) out=(1.90,0.29) stopped=False replan=False
+TR: step 1050 pose=(2.19,0.56,38deg) front=0.31 in=(3.00,0.46) out=(1.67,0.26) stopped=False replan=False
+TR: explorer.pick -> (160, 194) mode=frontier failed=0 covered=0 robot_cell=(155, 172)
+TR: step 1075 pose=(2.26,0.60,12deg) front=0.45 in=(3.00,1.27) out=(3.00,1.27) stopped=False replan=False
+TR: toward path_len=30 goal=(4.450000000000003, 1.0500000000000007) arrived=False
+[PATH] 좁은 통로: 0.14 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1100 pose=(2.39,0.59,-8deg) front=1.71 in=(3.00,2.28) out=(3.00,2.28) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1125 pose=(2.54,0.57,-9deg) front=2.57 in=(2.71,3.00) out=(2.71,3.00) stopped=False replan=False
+TR: explorer.pick -> (160, 194) mode=frontier failed=0 covered=0 robot_cell=(155, 175)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=25 goal=(4.450000000000003, 1.0500000000000007) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1150 pose=(2.69,0.55,-4deg) front=1.23 in=(2.71,3.00) out=(2.71,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1175 pose=(2.84,0.55,-1deg) front=0.99 in=(2.89,3.00) out=(2.89,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: explorer.pick -> (160, 194) mode=frontier failed=0 covered=0 robot_cell=(155, 179)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=21 goal=(4.450000000000003, 1.0500000000000007) arrived=False
+TR: step 1200 pose=(3.00,0.55,0deg) front=0.94 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1225 pose=(3.16,0.55,0deg) front=0.93 in=(3.00,2.99) out=(3.00,2.99) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: explorer.pick -> (160, 194) mode=frontier failed=0 covered=0 robot_cell=(155, 183)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1250 pose=(3.32,0.55,0deg) front=1.80 in=(3.00,2.99) out=(3.00,2.99) stopped=False replan=False
+TR: toward path_len=17 goal=(4.450000000000003, 1.0500000000000007) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1275 pose=(3.47,0.55,0deg) front=1.64 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1300 pose=(3.63,0.55,-0deg) front=1.49 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+TR: explorer.pick -> (160, 194) mode=frontier failed=0 covered=0 robot_cell=(155, 186)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=14 goal=(4.450000000000003, 1.0500000000000007) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1325 pose=(3.79,0.55,-0deg) front=1.33 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1350 pose=(3.95,0.55,-0deg) front=1.18 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: explorer.pick -> (160, 193) mode=frontier failed=0 covered=0 robot_cell=(155, 190)
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1375 pose=(4.11,0.55,0deg) front=1.02 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+TR: toward path_len=9 goal=(4.350000000000001, 1.0500000000000007) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: explorer.pick -> (160, 191) mode=frontier failed=0 covered=0 robot_cell=(155, 192)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1400 pose=(4.24,0.56,14deg) front=0.90 in=(0.82,3.00) out=(0.82,3.00) stopped=False replan=False
+TR: step 1425 pose=(4.36,0.61,35deg) front=0.78 in=(1.36,3.00) out=(1.36,3.00) stopped=False replan=False
+TR: explorer.pick -> (164, 190) mode=frontier failed=0 covered=0 robot_cell=(156, 193)
+TR: toward path_len=14 goal=(4.050000000000001, 1.4499999999999993) arrived=False
+TR: step 1450 pose=(4.43,0.69,63deg) front=1.04 in=(1.36,3.00) out=(1.36,3.00) stopped=False replan=False
+TR: step 1475 pose=(4.46,0.81,84deg) front=1.36 in=(2.35,3.00) out=(2.35,3.00) stopped=False replan=False
+TR: explorer.pick -> (163, 189) mode=frontier failed=0 covered=0 robot_cell=(158, 194)
+TR: toward path_len=13 goal=(3.8500000000000014, 0.8500000000000014) arrived=False
+TR: step 1500 pose=(4.47,0.89,123deg) front=1.71 in=(-2.15,2.15) out=(-2.15,2.15) stopped=False replan=False
+TR: explorer.pick -> (158, 188) mode=frontier failed=0 covered=0 robot_cell=(158, 194)
+TR: step 1525 pose=(4.47,0.89,-163deg) front=0.32 in=(-2.15,2.15) out=(-2.15,2.15) stopped=False replan=False
+TR: step 1550 pose=(4.42,0.85,-127deg) front=1.75 in=(0.69,3.00) out=(0.69,3.00) stopped=False replan=False
+TR: toward path_len=15 goal=(3.8500000000000014, 0.8500000000000014) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: explorer.pick -> (158, 188) mode=frontier failed=0 covered=0 robot_cell=(157, 193)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1575 pose=(4.37,0.74,-103deg) front=1.53 in=(2.46,3.00) out=(2.46,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1600 pose=(4.37,0.67,-64deg) front=3.08 in=(0.34,3.00) out=(0.34,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: explorer.pick -> (158, 182) mode=frontier failed=0 covered=0 robot_cell=(156, 193)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=16 goal=(3.25, 0.8500000000000014) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1625 pose=(4.39,0.65,-69deg) front=3.08 in=(-2.15,2.15) out=(-2.15,2.15) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: explorer.pick -> (158, 204) mode=frontier failed=0 covered=0 robot_cell=(156, 194)
+TR: step 1650 pose=(4.45,0.60,-21deg) front=2.08 in=(1.02,3.00) out=(1.02,3.00) stopped=False replan=False
+TR: step 1675 pose=(4.58,0.57,-10deg) front=1.93 in=(2.78,3.00) out=(2.78,3.00) stopped=False replan=False
+TR: toward path_len=19 goal=(5.75, 0.9500000000000011) arrived=False
+TR: explorer.pick -> (159, 207) mode=frontier failed=0 covered=0 robot_cell=(155, 196)
+TR: step 1700 pose=(4.73,0.55,-4deg) front=1.67 in=(2.73,3.00) out=(2.73,3.00) stopped=False replan=False
+TR: step 1725 pose=(4.87,0.54,-10deg) front=1.64 in=(3.00,1.67) out=(3.00,1.67) stopped=False replan=False
+TR: toward path_len=16 goal=(5.75, 0.9500000000000011) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1750 pose=(4.99,0.51,-9deg) front=1.52 in=(1.20,3.00) out=(1.20,3.00) stopped=False replan=False
+TR: explorer.pick -> (159, 207) mode=frontier failed=0 covered=0 robot_cell=(155, 200)
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1775 pose=(5.08,0.51,30deg) front=0.44 in=(-2.15,2.15) out=(-2.15,2.15) stopped=False replan=False
+TR: explorer.pick -> (174, 198) mode=frontier failed=0 covered=0 robot_cell=(155, 200)
+TR: toward path_len=28 goal=(4.850000000000001, 2.4499999999999993) arrived=False
+TR: step 1800 pose=(5.08,0.51,105deg) front=0.32 in=(-2.15,2.15) out=(-2.15,2.15) stopped=False replan=False
+TR: step 1825 pose=(5.02,0.57,149deg) front=0.93 in=(0.69,3.00) out=(0.69,3.00) stopped=False replan=False
+TR: explorer.pick -> (174, 198) mode=frontier failed=0 covered=0 robot_cell=(156, 199)
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 1850 pose=(4.91,0.61,162deg) front=0.80 in=(2.56,0.61) out=(2.56,0.61) stopped=False replan=False
+TR: toward path_len=26 goal=(4.850000000000001, 2.4499999999999993) arrived=False
+TR: step 1875 pose=(4.82,0.67,132deg) front=0.81 in=(3.00,1.48) out=(3.00,1.48) stopped=False replan=False
+TR: step 1900 pose=(4.76,0.78,108deg) front=2.14 in=(3.00,1.69) out=(3.00,1.69) stopped=False replan=False
+TR: explorer.pick -> (174, 198) mode=frontier failed=0 covered=0 robot_cell=(158, 197)
+TR: toward path_len=22 goal=(4.850000000000001, 2.4499999999999993) arrived=False
+TR: step 1925 pose=(4.74,0.91,92deg) front=1.24 in=(3.00,2.61) out=(3.00,2.61) stopped=False replan=False
+TR: step 1950 pose=(4.74,1.03,73deg) front=0.71 in=(2.15,-2.15) out=(2.15,-2.15) stopped=False replan=False
+TR: explorer.pick -> (158, 187) mode=frontier failed=0 covered=0 robot_cell=(160, 197)
+TR: step 1975 pose=(4.74,1.03,-1deg) front=0.35 in=(2.15,-2.15) out=(2.15,-2.15) stopped=False replan=False
+TR: toward path_len=19 goal=(3.75, 0.8500000000000014) arrived=False
+TR: step 2000 pose=(4.77,1.00,-54deg) front=2.46 in=(3.00,0.27) out=(3.00,0.27) stopped=False replan=False
+TR: explorer.pick -> (158, 186) mode=frontier failed=0 covered=0 robot_cell=(159, 197)
+TR: step 2025 pose=(4.77,0.93,-108deg) front=1.81 in=(2.99,0.79) out=(2.99,0.79) stopped=False replan=False
+TR: toward path_len=21 goal=(3.650000000000002, 0.8500000000000014) arrived=False
+TR: step 2050 pose=(4.71,0.86,-149deg) front=2.21 in=(3.00,0.90) out=(3.00,0.90) stopped=False replan=False
+TR: explorer.pick -> (158, 186) mode=frontier failed=0 covered=0 robot_cell=(158, 196)
+TR: step 2075 pose=(4.60,0.82,-176deg) front=0.45 in=(3.00,1.63) out=(3.00,1.63) stopped=False replan=False
+[MISSION] TARGET
+[TARGET] 관측: Target(x=-0.9437768476667356, y=0.589909012646479, visited=False)
+[TARGET] 관측: Target(x=-0.6919685434330538, y=0.5982077951145929, visited=False)
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2100 pose=(4.56,0.80,-139deg) front=1.86 in=(0.25,3.00) out=(0.25,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=46 goal=(0.3500000000000014, 0.6500000000000004) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2125 pose=(4.46,0.71,-138deg) front=1.73 in=(2.01,3.00) out=(2.01,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2150 pose=(4.37,0.62,-142deg) front=1.71 in=(3.00,1.73) out=(3.00,1.73) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=42 goal=(0.3500000000000014, 0.6500000000000004) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2175 pose=(4.26,0.56,-163deg) front=2.05 in=(3.00,1.96) out=(3.00,1.96) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2200 pose=(4.12,0.54,-177deg) front=1.25 in=(3.00,2.37) out=(3.00,2.37) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2225 pose=(3.97,0.54,178deg) front=0.90 in=(3.00,2.95) out=(3.00,2.95) stopped=False replan=False
+TR: toward path_len=38 goal=(0.3500000000000014, 0.6500000000000004) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2250 pose=(3.81,0.55,178deg) front=0.89 in=(2.94,3.00) out=(2.94,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2275 pose=(3.66,0.55,179deg) front=0.93 in=(2.95,3.00) out=(2.95,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=35 goal=(0.3500000000000014, 0.6500000000000004) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2300 pose=(3.50,0.55,180deg) front=0.96 in=(2.97,3.00) out=(2.97,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2325 pose=(3.34,0.55,-180deg) front=0.98 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=30 goal=(0.3500000000000014, 0.5500000000000007) arrived=False
+TR: step 2350 pose=(3.19,0.55,-180deg) front=1.84 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2375 pose=(3.03,0.55,-180deg) front=1.68 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2400 pose=(2.87,0.55,180deg) front=1.53 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=26 goal=(0.3500000000000014, 0.5500000000000007) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2425 pose=(2.71,0.55,180deg) front=1.37 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2450 pose=(2.55,0.55,180deg) front=1.22 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=22 goal=(0.3500000000000014, 0.5500000000000007) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2475 pose=(2.40,0.55,180deg) front=1.07 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2500 pose=(2.24,0.55,-180deg) front=0.97 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2525 pose=(2.08,0.55,-180deg) front=0.97 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+TR: toward path_len=20 goal=(0.3500000000000014, 0.6500000000000004) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2550 pose=(1.92,0.55,-180deg) front=0.97 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2575 pose=(1.76,0.55,-180deg) front=0.97 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=16 goal=(0.3500000000000014, 0.6500000000000004) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2600 pose=(1.61,0.55,180deg) front=0.97 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2625 pose=(1.45,0.55,180deg) front=0.98 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=12 goal=(0.3500000000000014, 0.6500000000000004) arrived=False
+TR: step 2650 pose=(1.29,0.55,180deg) front=0.97 in=(3.00,3.00) out=(3.00,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2675 pose=(1.15,0.54,-167deg) front=1.03 in=(2.16,3.00) out=(2.16,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2700 pose=(1.02,0.53,180deg) front=0.84 in=(3.00,2.36) out=(3.00,2.36) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=9 goal=(0.3500000000000014, 0.6500000000000004) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2725 pose=(0.89,0.53,-170deg) front=0.75 in=(3.00,2.02) out=(3.00,2.02) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2750 pose=(0.75,0.52,178deg) front=0.57 in=(1.57,3.00) out=(1.57,3.00) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: toward path_len=7 goal=(0.15000000000000036, 0.45000000000000107) arrived=False
+[PATH] 좁은 통로: 0.18 m 여유
+TR: step 2775 pose=(0.62,0.50,-169deg) front=0.80 in=(3.00,1.20) out=(3.00,1.20) stopped=False replan=False
+[PATH] 좁은 통로: 0.18 m 여유
+[TARGET] 방문 1/2: Target(x=0.15649197497080417, y=0.6412841362508388, visited=True)
+TR: step 2800 pose=(0.56,0.50,178deg) front=0.72 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 2825 pose=(0.56,0.50,178deg) front=1.07 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 2850 pose=(0.56,0.50,178deg) front=1.19 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 2875 pose=(0.56,0.50,178deg) front=1.31 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 2900 pose=(0.56,0.50,178deg) front=1.35 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 2925 pose=(0.56,0.50,178deg) front=1.36 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 2950 pose=(0.56,0.50,178deg) front=1.60 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 2975 pose=(0.56,0.50,178deg) front=2.04 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3000 pose=(0.56,0.50,178deg) front=0.59 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3025 pose=(0.56,0.50,178deg) front=0.40 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3050 pose=(0.56,0.50,178deg) front=0.34 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3075 pose=(0.56,0.50,178deg) front=0.33 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3100 pose=(0.56,0.50,178deg) front=0.33 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3125 pose=(0.56,0.50,178deg) front=0.38 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3150 pose=(0.56,0.50,178deg) front=0.39 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3175 pose=(0.56,0.50,178deg) front=0.73 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3200 pose=(0.56,0.50,178deg) front=1.06 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3225 pose=(0.56,0.50,178deg) front=1.21 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3250 pose=(0.56,0.50,178deg) front=1.30 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3275 pose=(0.56,0.50,178deg) front=1.36 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3300 pose=(0.56,0.50,178deg) front=1.33 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3325 pose=(0.56,0.50,178deg) front=1.60 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3350 pose=(0.56,0.50,178deg) front=2.42 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3375 pose=(0.56,0.50,178deg) front=0.64 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3400 pose=(0.56,0.50,178deg) front=0.41 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3425 pose=(0.56,0.50,178deg) front=0.35 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3450 pose=(0.56,0.50,178deg) front=0.33 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3475 pose=(0.56,0.50,178deg) front=0.34 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3500 pose=(0.56,0.50,178deg) front=0.38 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[TARGET] 관측: Target(x=-2.0479736084697397, y=2.2669041432358177, visited=False)
+TR: step 3525 pose=(0.56,0.50,178deg) front=0.39 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3550 pose=(0.56,0.50,178deg) front=0.43 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3575 pose=(0.56,0.50,178deg) front=1.06 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3600 pose=(0.56,0.50,178deg) front=1.21 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3625 pose=(0.56,0.50,178deg) front=1.31 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3650 pose=(0.56,0.50,178deg) front=1.37 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3675 pose=(0.56,0.50,178deg) front=1.35 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+TR: step 3700 pose=(0.56,0.50,178deg) front=1.59 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False
+[PATH] 경로 없음: TARGET no_path
+TR: step 3725 pose=(0.56,0.50,178deg) front=2.20 in=(-0.70,0.70) out=(-0.70,0.70) stopped=False replan=False

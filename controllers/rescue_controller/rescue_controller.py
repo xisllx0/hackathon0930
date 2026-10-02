@@ -15,6 +15,11 @@ from global_planner import astar
 from drive import toward, Sweep
 from safety import SafetyMonitor
 
+try:
+    from map_view import MapViewer      # 실시간 지도 창 (선택 기능: 없어도 로봇은 정상 동작)
+except Exception:
+    MapViewer = None
+
 
 def main():
     robot = Robot()
@@ -23,8 +28,9 @@ def main():
     localizer = Localization()
     mission = Mission()
     targets = TargetManager(visit_distance=0.42)
-    mapping = StaticMapping()
-    navigator = Navigator(mapping.resolution, mapping.origin_xy, clearance=0.23)
+    viewer = MapViewer() if MapViewer else None
+    mapping = StaticMapping(size=300)   # 30 m x 30 m (apartment is ~13 x 18 m); the default 100 cells = 10 m ends at x=+-5 m
+    navigator = Navigator(mapping.resolution, mapping.origin_xy, clearance=0.15)
     explorer = Explorer()
     sweep = Sweep()
     safety = SafetyMonitor()
@@ -48,6 +54,8 @@ def main():
             pose = localizer.update(*io.encoder_positions(), io.get_yaw())
             ranges = io.lidar_ranges()
             mapping.update(pose, ranges)
+            if viewer and step_count % 10 == 0:      # 0.6초마다 지도 창 갱신
+                viewer.show(mapping, pose, path_xy, [(t.x, t.y) for t in targets.targets])
 
             if step_count % YOLO_EVERY_STEPS == 0:
                 for detection in detector.detect_camera(io.camera):
@@ -157,6 +165,8 @@ def main():
             io.wheels(left, right)
             step_count += 1
     finally:
+        if viewer:
+            viewer.save('final_map.png')         # 마지막 지도를 이미지로 저장
         io.stop()
 
 

@@ -1,0 +1,32 @@
+0.4 start -0.3 -7.5 3.14
+2.4 phase0 turned_deg 57.2 index_shift 57 -> index runs CW match_err 0.029
+25.2 phase1 out arrived err_m 0.147 | back arrived err_m 0.127 time_s 20.7
+35.3   goal frontier resolved found 0 visited 0
+35.8   goal frontier resolved found 0 visited 0
+36.4   goal frontier resolved found 0 visited 0
+36.9   goal frontier resolved found 0 visited 0
+37.4   goal frontier resolved found 0 visited 0
+37.9   goal frontier resolved found 0 visited 0
+40.4   goal frontier resolved found 0 visited 0
+41.0   goal frontier resolved found 0 visited 0
+47.6   goal frontier resolved found 0 visited 0
+49.2   goal frontier resolved found 0 visited 0
+58.4   goal frontier resolved found 0 visited 0
+58.9   goal frontier resolved found 0 visited 0
+59.4   goal frontier resolved found 0 visited 0
+59.9   goal frontier resolved found 0 visited 0
+60.4   goal frontier resolved found 0 visited 0
+60.9   goal frontier resolved found 0 visited 0
+62.5   goal frontier resolved found 0 visited 0
+102.7   stuck at -1.59 -6.02 goal (0.27500000000000036, -6.924999999999999) front_min 0.14 stopped True
+106.6   goal frontier stuck found 0 visited 0
+126.7   stuck at -1.33 -6.41 goal (-2.7249999999999996, -6.725) front_min 0.15 stopped True
+130.6   goal frontier stuck found 0 visited 0
+140.7   stuck at -1.31 -6.43 goal (-3.174999999999999, -7.0249999999999995) front_min 0.15 stopped False
+144.5   goal frontier stuck found 0 visited 0
+154.6   stuck at -1.31 -6.42 goal (-3.924999999999999, -6.824999999999999) front_min 0.15 stopped False
+158.5   goal frontier stuck found 0 visited 0
+168.6   stuck at -1.31 -6.42 goal (-1.8249999999999993, -9.725) front_min 0.15 stopped True
+172.4   goal frontier stuck found 0 visited 0
+182.5   stuck at -1.36 -6.37 goal (-4.274999999999999, -5.174999999999999) front_min 0.15 stopped False
+186.4   goal frontier stuck found 0 visited 0
